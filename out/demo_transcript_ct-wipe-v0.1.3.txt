@@ -1,0 +1,24 @@
+CT-Wipe v0.1 complete
+Decision: CERTIFIED
+WPO: sha256:42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: sha256:ec9c7bae8aa077622c303986076b0153e1454eec5b0506df111a6598f7d5bcf3
+Merkle Root: sha256:5919ac2209e0a890fbd92afc6fc965e93458efbb5b1b472ff6f9ee63eea60fef
+VERIFY PASS
+Run dir: out/demo_run_tmp
+WPO: 42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: ec9c7bae8aa077622c303986076b0153e1454eec5b0506df111a6598f7d5bcf3
+Merkle Root: 5919ac2209e0a890fbd92afc6fc965e93458efbb5b1b472ff6f9ee63eea60fef
+WROTE out/demo_run_tmp/seckey.demo.b64 (demo key)
+SIGN OK: wrote out/demo_run_tmp/signature.json
+VERIFY PASS
+Run dir: out/demo_run_tmp
+WPO: 42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: ec9c7bae8aa077622c303986076b0153e1454eec5b0506df111a6598f7d5bcf3
+Merkle Root: 5919ac2209e0a890fbd92afc6fc965e93458efbb5b1b472ff6f9ee63eea60fef
+VERIFY PASS
+Run dir: out/demo_run_tmp
+WPO: 42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: ec9c7bae8aa077622c303986076b0153e1454eec5b0506df111a6598f7d5bcf3
+Merkle Root: 5919ac2209e0a890fbd92afc6fc965e93458efbb5b1b472ff6f9ee63eea60fef
+
+DEMO COMPLETE -> out/demo_run_tmp

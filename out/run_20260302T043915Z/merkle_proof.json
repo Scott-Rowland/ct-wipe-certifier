@@ -1,0 +1,14 @@
+{
+  "proof_version": "1.0",
+  "merkle_root": "sha256:66e31da01ccffa1a97f9a2270ac890b00d5cbb371a104e1add7b35cbecf3599d",
+  "leaves": [
+    {
+      "artifact": "CT.WPO",
+      "hash": "sha256:42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d"
+    },
+    {
+      "artifact": "CT.CDR",
+      "hash": "sha256:d9213fb347fcb30454d0c2efd62e17f19b1e616e5dfef47fbf8acaf11b2c721f"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "sig_version": "CT-SIG-v0.1",
+  "object_type": "CT.SIGNATURE",
+  "signing_alg": "ed25519",
+  "signed_field": "merkle_root",
+  "merkle_root": "5919ac2209e0a890fbd92afc6fc965e93458efbb5b1b472ff6f9ee63eea60fef",
+  "signature_b64": "p9qt8qRNrn9d4458uhGMZ4gPjPMi70HWuZyyHM0EieU5MUhkJweswoO6+3fLmSmlMKqntUQwzyuZ1dXknt0ZDw==",
+  "pubkey_b64": "GJAnYglrE8de7dL5iU9n0MLR0j34NAOuTc0QDFe7YVU="
+}

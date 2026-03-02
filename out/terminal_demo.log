@@ -1,0 +1,506 @@
+Script started on Mon Mar  2 12:24:57 2026
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mrm -f seckey.b64[27m[16D[27mr[27mm[27m [27m-[27mf[27m [27ms[27me[27mc[27mk[27me[27my[27m.[27mb[27m6[27m4[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mls seckey.b64[27m[13D[27ml[27ms[27m [27ms[27me[27mc[27mk[27me[27my[27m.[27mb[27m6[27m4[?2004l
+ls: seckey.b64: No such file or directory
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mgit status[27m
+[7mgit ls-files | egrep 'seckey|\.b64$' || true[27m[K[A[27mg[27mi[27mt[27m [27ms[27mt[27ma[27mt[27mu[27ms[1B[27mg[27mi[27mt[27m [27ml[27ms[27m-[27mf[27mi[27ml[27me[27ms[27m [27m|[27m [27me[27mg[27mr[27me[27mp[27m [27m'[27ms[27me[27mc[27mk[27me[27my[27m|[27m\[27m.[27mb[27m6[27m4[27m$[27m'[27m [27m|[27m|[27m [27mt[27mr[27mu[27me[?2004l
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mcd ~/Desktop/Cherrytreemaster/ct-wipe[27m
+[7mgit status[27m[K
+[7mls -la seckey.b64 || true[27m[K
+[7mgit ls-files | egrep 'seckey|\.b64$' || true[27m[K[3A[27mc[27md[27m [27m~[27m/[27mD[27me[27ms[27mk[27mt[27mo[27mp[27m/[27mC[27mh[27me[27mr[27mr[27my[27mt[27mr[27me[27me[27mm[27ma[27ms[27mt[27me[27mr[27m/[27mc[27mt[27m-[27mw[27mi[27mp[27me[1B[27mg[27mi[27mt[27m [27ms[27mt[27ma[27mt[27mu[27ms[1B[27ml[27ms[27m [27m-[27ml[27ma[27m [27ms[27me[27mc[27mk[27me[27my[27m.[27mb[27m6[27m4[27m [27m|[27m|[27m [27mt[27mr[27mu[27me[1B[27mg[27mi[27mt[27m [27ml[27ms[27m-[27mf[27mi[27ml[27me[27ms[27m [27m|[27m [27me[27mg[27mr[27me[27mp[27m [27m'[27ms[27me[27mc[27mk[27me[27my[27m|[27m\[27m.[27mb[27m6[27m4[27m$[27m'[27m [27m|[27m|[27m [27mt[27mr[27mu[27me[?2004l
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+ls: seckey.b64: No such file or directory
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h>....                                                                                                                          
+[7mOUTDIR="out/demo_run_tmp"[27m[K
+[7mrm -rf "$OUTDIR"[27m[K
+[7mmkdir -p "$OUTDIR"[27m[K
+[K
+[7mpython3 -m cli.ct_wipe_certify \[27m[K
+[7m  --input examples/sample_wpo.json \[27m[K
+[7m  --policy CT-WIPE-T1-CRYPTO-ERASE \[27m[K
+[7m  --outdir "$OUTDIR"[27m[K
+[K
+[7mpython3 -m cli.ct_wipe_certify --verify "$OUTDIR"[27m[K
+[K
+[7m# optional signing (only if cryptography import works)[27m[K
+[7mif python3 -c "import cryptography" >/dev/null 2>&1; then[27m[K
+[7m  python3 - <<'PY'[27m[K
+[7mimport os, base64[27m[K
+[7mfrom pathlib import Path[27m[K
+[7mPath("out/demo_run_tmp/seckey.demo.b64").write_text(base64.b64encode(os.urandom(32)).decode("ascii") + "\n")[27m[K
+[7mprint("WROTE out/demo_run_tmp/seckey.demo.b64 (demo key)")[27m[K
+[7mPY[27m[K
+[K
+[7m  python3 -m cli.ct_wipe_certify --verify "$OUTDIR" --sign --seckey "$OUTDIR/seckey.demo.b64"[27m[K
+[7m  python3 -m cli.ct_wipe_certify --verify "$OUTDIR" --verify-signature[27m[K
+[K
+[7m  # delete demo key after use[27m[K
+[7m  rm -f "$OUTDIR/seckey.demo.b64"[27m[K
+[7melse[27m[K
+[7m  echo "NOTE: cryptography not installed; skipping sign/verify-signature demo."[27m[K
+[7mfi[27m[K
+[K
+[7mecho[27m[K
+[7mecho "DEMO COMPLETE -> $OUTDIR"[27m[K
+[7mSH[27m[K
+[K
+[7mchmod +x scripts/demo_run.sh[27m[K[33A[27mO[27mU[27mT[27mD[27mI[27mR[27m=[27m"[27mo[27mu[27mt[27m/[27md[27me[27mm[27mo[27m_[27mr[27mu[27mn[27m_[27mt[27mm[27mp[27m"[1B[27mr[27mm[27m [27m-[27mr[27mf[27m [27m"[27m$[27mO[27mU[27mT[27mD[27mI[27mR[27m"[1B[27mm[27mk[27md[27mi[27mr[27m [27m-[27mp[27m [27m"[27m$[27mO[27mU[27mT[27mD[27mI[27mR[27m"[2B[27mp[27my[27mt[27mh[27mo[27mn[27m3[27m [27m-[27mm[27m [27mc[27ml[27mi[27m.[27mc[27mt[27m_[27mw[27mi[27mp[27me[27m_[27mc[27me[27mr[27mt[27mi[27mf[27my[27m [27m\[1B[27m [27m [27m-[27m-[27mi[27mn[27mp[27mu[27mt[27m [27me[27mx[27ma[27mm[27mp[27ml[27me[27ms[27m/[27ms[27ma[27mm[27mp[27ml[27me[27m_[27mw[27mp[27mo[27m.[27mj[27ms[27mo[27mn[27m [27m\[1B[27m [27m [27m-[27m-[27mp[27mo[27ml[27mi[27mc[27my[27m [27mC[27mT[27m-[27mW[27mI[27mP[27mE[27m-[27mT[27m1[27m-[27mC[27mR[27mY[27mP[27mT[27mO[27m-[27mE[27mR[27mA[27mS[27mE[27m [27m\[1B[27m [27m [27m-[27m-[27mo[27mu[27mt[27md[27mi[27mr[27m [27m"[27m$[27mO[27mU[27mT[27mD[27mI[27mR[27m"[2B[27mp[27my[27mt[27mh[27mo[27mn[27m3[27m [27m-[27mm[27m [27mc[27ml[27mi[27m.[27mc[27mt[27m_[27mw[27mi[27mp[27me[27m_[27mc[27me[27mr[27mt[27mi[27mf[27my[27m [27m-[27m-[27mv[27me[27mr[27mi[27mf[27my[27m [27m"[27m$[27mO[27mU[27mT[27mD[27mI[27mR[27m"[2B[27m#[27m [27mo[27mp[27mt[27mi[27mo[27mn[27ma[27ml[27m [27ms[27mi[27mg[27mn[27mi[27mn[27mg[27m [27m([27mo[27mn[27ml[27my[27m [27mi[27mf[27m [27mc[27mr[27my[27mp[27mt[27mo[27mg[27mr[27ma[27mp[27mh[27my[27m [27mi[27mm[27mp[27mo[27mr[27mt[27m [27mw[27mo[27mr[27mk[27ms[27m)[1B[27mi[27mf[27m [27mp[27my[27mt[27mh[27mo[27mn[27m3[27m [27m-[27mc[27m [27m"[27mi[27mm[27mp[27mo[27mr[27mt[27m [27mc[27mr[27my[27mp[27mt[27mo[27mg[27mr[27ma[27mp[27mh[27my[27m"[27m [27m>[27m/[27md[27me[27mv[27m/[27mn[27mu[27ml[27ml[27m [27m2[27m>[27m&[27m1[27m;[27m [27mt[27mh[27me[27mn[1B[27m [27m [27mp[27my[27mt[27mh[27mo[27mn[27m3[27m [27m-[27m [27m<[27m<[27m'[27mP[27mY[27m'[1B[27mi[27mm[27mp[27mo[27mr[27mt[27m [27mo[27ms[27m,[27m [27mb[27ma[27ms[27me[27m6[27m4[1B[27mf[27mr[27mo[27mm[27m [27mp[27ma[27mt[27mh[27ml[27mi[27mb[27m [27mi[27mm[27mp[27mo[27mr[27mt[27m [27mP[27ma[27mt[27mh[1B[27mP[27ma[27mt[27mh[27m([27m"[27mo[27mu[27mt[27m/[27md[27me[27mm[27mo[27m_[27mr[27mu[27mn[27m_[27mt[27mm[27mp[27m/[27ms[27me[27mc[27mk[27me[27my[27m.[27md[27me[27mm[27mo[27m.[27mb[27m6[27m4[27m"[27m)[27m.[27mw[27mr[27mi[27mt[27me[27m_[27mt[27me[27mx[27mt[27m([27mb[27ma[27ms[27me[27m6[27m4[27m.[27mb[27m6[27m4[27me[27mn[27mc[27mo[27md[27me[27m([27mo[27ms[27m.[27mu[27mr[27ma[27mn[27md[27mo[27mm[27m([27m3[27m2[27m)[27m)[27m.[27md[27me[27mc[27mo[27md[27me[27m([27m"[27ma[27ms[27mc[27mi[27mi[27m"[27m)[27m [27m+[27m [27m"[27m\[27mn[27m"[27m)[1B[27mp[27mr[27mi[27mn[27mt[27m([27m"[27mW[27mR[27mO[27mT[27mE[27m [27mo[27mu[27mt[27m/[27md[27me[27mm[27mo[27m_[27mr[27mu[27mn[27m_[27mt[27mm[27mp[27m/[27ms[27me[27mc[27mk[27me[27my[27m.[27md[27me[27mm[27mo[27m.[27mb[27m6[27m4[27m [27m([27md[27me[27mm[27mo[27m [27mk[27me[27my[27m)[27m"[27m)[1B[27mP[27mY[2B[27m [27m [27mp[27my[27mt[27mh[27mo[27mn[27m3[27m [27m-[27mm[27m [27mc[27ml[27mi[27m.[27mc[27mt[27m_[27mw[27mi[27mp[27me[27m_[27mc[27me[27mr[27mt[27mi[27mf[27my[27m [27m-[27m-[27mv[27me[27mr[27mi[27mf[27my[27m [27m"[27m$[27mO[27mU[27mT[27mD[27mI[27mR[27m"[27m [27m-[27m-[27ms[27mi[27mg[27mn[27m [27m-[27m-[27ms[27me[27mc[27mk[27me[27my[27m [27m"[27m$[27mO[27mU[27mT[27mD[27mI[27mR[27m/[27ms[27me[27mc[27mk[27me[27my[27m.[27md[27me[27mm[27mo[27m.[27mb[27m6[27m4[27m"[1B[27m [27m [27mp[27my[27mt[27mh[27mo[27mn[27m3[27m [27m-[27mm[27m [27mc[27ml[27mi[27m.[27mc[27mt[27m_[27mw[27mi[27mp[27me[27m_[27mc[27me[27mr[27mt[27mi[27mf[27my[27m [27m-[27m-[27mv[27me[27mr[27mi[27mf[27my[27m [27m"[27m$[27mO[27mU[27mT[27mD[27mI[27mR[27m"[27m [27m-[27m-[27mv[27me[27mr[27mi[27mf[27my[27m-[27ms[27mi[27mg[27mn[27ma[27mt[27mu[27mr[27me[2B[27m [27m [27m#[27m [27md[27me[27ml[27me[27mt[27me[27m [27md[27me[27mm[27mo[27m [27mk[27me[27my[27m [27ma[27mf[27mt[27me[27mr[27m [27mu[27ms[27me[1B[27m [27m [27mr[27mm[27m [27m-[27mf[27m [27m"[27m$[27mO[27mU[27mT[27mD[27mI[27mR[27m/[27ms[27me[27mc[27mk[27me[27my[27m.[27md[27me[27mm[27mo[27m.[27mb[27m6[27m4[27m"[1B[27me[27ml[27ms[27me[1B[27m [27m [27me[27mc[27mh[27mo[27m [27m"[27mN[27mO[27mT[27mE[27m:[27m [27mc[27mr[27my[27mp[27mt[27mo[27mg[27mr[27ma[27mp[27mh[27my[27m [27mn[27mo[27mt[27m [27mi[27mn[27ms[27mt[27ma[27ml[27ml[27me[27md[27m;[27m [27ms[27mk[27mi[27mp[27mp[27mi[27mn[27mg[27m [27ms[27mi[27mg[27mn[27m/[27mv[27me[27mr[27mi[27mf[27my[27m-[27ms[27mi[27mg[27mn[27ma[27mt[27mu[27mr[27me[27m [27md[27me[27mm[27mo[27m.[27m"[1B[27mf[27mi[2B[27me[27mc[27mh[27mo[1B[27me[27mc[27mh[27mo[27m [27m"[27mD[27mE[27mM[27mO[27m [27mC[27mO[27mM[27mP[27mL[27mE[27mT[27mE[27m [27m-[27m>[27m [27m$[27mO[27mU[27mT[27mD[27mI[27mR[27m"[1B[27mS[27mH[2B[27mc[27mh[27mm[27mo[27md[27m [27m+[27mx[27m [27ms[27mc[27mr[27mi[27mp[27mt[27ms[27m/[27md[27me[27mm[27mo[27m_[27mr[27mu[27mn[27m.[27ms[27mh[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7m./scripts/demo_run.sh[27m[21D[27m.[27m/[27ms[27mc[27mr[27mi[27mp[27mt[27ms[27m/[27md[27me[27mm[27mo[27m_[27mr[27mu[27mn[27m.[27ms[27mh[?2004l
+CT-Wipe v0.1 complete
+Decision: CERTIFIED
+WPO: sha256:42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: sha256:6730cbc2aab52c7437546572f8fae169605278124fe394c5286b3d7682a59d13
+Merkle Root: sha256:fbd7e2cfc50385ce832865a5f67031134f07255a91f042133b000bc39aafd491
+VERIFY PASS
+Run dir: out/demo_run_tmp
+WPO: 42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: 6730cbc2aab52c7437546572f8fae169605278124fe394c5286b3d7682a59d13
+Merkle Root: fbd7e2cfc50385ce832865a5f67031134f07255a91f042133b000bc39aafd491
+WROTE out/demo_run_tmp/seckey.demo.b64 (demo key)
+SIGN OK: wrote out/demo_run_tmp/signature.json
+VERIFY PASS
+Run dir: out/demo_run_tmp
+WPO: 42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: 6730cbc2aab52c7437546572f8fae169605278124fe394c5286b3d7682a59d13
+Merkle Root: fbd7e2cfc50385ce832865a5f67031134f07255a91f042133b000bc39aafd491
+VERIFY PASS
+Run dir: out/demo_run_tmp
+WPO: 42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: 6730cbc2aab52c7437546572f8fae169605278124fe394c5286b3d7682a59d13
+Merkle Root: fbd7e2cfc50385ce832865a5f67031134f07255a91f042133b000bc39aafd491
+
+DEMO COMPLETE -> out/demo_run_tmp
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mprintf "\n# demo outputs\nout/\n\n# venv\n.venv/\n\n# python caches\n__pycache__/\n*.pyc\n" >> .gitignore[27m
+[7mgit add .gitignore[27m[K
+[7mgit commit -m "Hygiene: ignore out/, venv, caches" || true[27m[K[A[A[14D[27mp[27mr[27mi[27mn[27mt[27mf[27m [27m"[27m\[27mn[27m#[27m [27md[27me[27mm[27mo[27m [27mo[27mu[27mt[27mp[27mu[27mt[27ms[27m\[27mn[27mo[27mu[27mt[27m/[27m\[27mn[27m\[27mn[27m#[27m [27mv[27me[27mn[27mv[27m\[27mn[27m.[27mv[27me[27mn[27mv[27m/[27m\[27mn[27m\[27mn[27m#[27m [27mp[27my[27mt[27mh[27mo[27mn[27m [27mc[27ma[27mc[27mh[27me[27ms[27m\[27mn[27m_[27m_[27mp[27my[27mc[27ma[27mc[27mh[27me[27m_[27m_[27m/[27m\[27mn[27m*[27m.[27mp[27my[27mc[27m\[27mn[27m"[27m [27m>[27m>[27m [27m.[27mg[27mi[27mt[27mi[27mg[27mn[27mo[27mr[27me[1B[27mg[27mi[27mt[27m [27ma[27md[27md[27m [27m.[27mg[27mi[27mt[27mi[27mg[27mn[27mo[27mr[27me[1B[27mg[27mi[27mt[27m [27mc[27mo[27mm[27mm[27mi[27mt[27m [27m-[27mm[27m [27m"[27mH[27my[27mg[27mi[27me[27mn[27me[27m:[27m [27mi[27mg[27mn[27mo[27mr[27me[27m [27mo[27mu[27mt[27m/[27m,[27m [27mv[27me[27mn[27mv[27m,[27m [27mc[27ma[27mc[27mh[27me[27ms[27m"[27m [27m|[27m|[27m [27mt[27mr[27mu[27me[?2004l
+[master 368a21d] Hygiene: ignore out/, venv, caches
+ 1 file changed, 10 insertions(+)
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mfind . -name "__pycache__" -type d -prune -exec rm -rf {} +[27m
+[7mfind . -name "*.pyc" -type f -delete[27m[K[A[8C[27mf[27mi[27mn[27md[27m [27m.[27m [27m-[27mn[27ma[27mm[27me[27m [27m"[27m_[27m_[27mp[27my[27mc[27ma[27mc[27mh[27me[27m_[27m_[27m"[27m [27m-[27mt[27my[27mp[27me[27m [27md[27m [27m-[27mp[27mr[27mu[27mn[27me[27m [27m-[27me[27mx[27me[27mc[27m [27mr[27mm[27m [27m-[27mr[27mf[27m [27m{[27m}[27m [27m+[1B[27mf[27mi[27mn[27md[27m [27m.[27m [27m-[27mn[27ma[27mm[27me[27m [27m"[27m*[27m.[27mp[27my[27mc[27m"[27m [27m-[27mt[27my[27mp[27me[27m [27mf[27m [27m-[27md[27me[27ml[27me[27mt[27me[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7msed -n '1,200p' README.md[27m
+[7msed -n '1,240p' VERIFY.md[27m[K[A[19C[27ms[27me[27md[27m [27m-[27mn[27m [27m'[27m1[27m,[27m2[27m0[27m0[27mp[27m'[27m [27mR[27mE[27mA[27mD[27mM[27mE[27m.[27mm[27md[1B[27ms[27me[27md[27m [27m-[27mn[27m [27m'[27m1[27m,[27m2[27m4[27m0[27mp[27m'[27m [27mV[27mE[27mR[27mI[27mF[27mY[27m.[27mm[27md[?2004l
+# CT-Wipe v0.1  
+Deterministic Cryptographic Wipe Certification
+
+CT-Wipe is a command-line tool that produces tamper-evident,
+deterministic certification artifacts for device wipe and cryptographic erase events.
+
+It generates reproducible hash-linked records and optional Ed25519 signatures
+that can be independently verified.
+
+---
+
+## What Problem This Solves
+
+Most device wipe processes produce logs — not cryptographic proof.
+
+CT-Wipe provides:
+
+- Deterministic canonicalization of wipe metadata
+- SHA-256 artifact hashing
+- Merkle root anchoring
+- Optional Ed25519 signature
+- Reproducible verification
+
+The same input produces identical certification artifacts.
+
+---
+
+## Quick Demo
+
+Generate a certification run:
+
+```bash
+RUN="out/run_$(date -u +%Y%m%dT%H%M%SZ)"
+
+python3 -m cli.ct_wipe_certify \
+  --input examples/sample_wpo.json \
+  --policy CT-WIPE-T1-CRYPTO-ERASE \
+  --outdir "$RUN"
+```
+
+Verify artifacts:
+
+```bash
+python3 -m cli.ct_wipe_certify --verify "$RUN"
+```
+
+Sign artifacts (optional):
+
+```bash
+python3 -m cli.ct_wipe_certify \
+  --verify "$RUN" \
+  --sign \
+  --seckey seckey.b64
+```
+
+Verify signature:
+
+```bash
+python3 -m cli.ct_wipe_certify \
+  --verify "$RUN" \
+  --verify-signature
+```
+
+---
+
+## Output Structure
+
+Each run produces:
+
+```
+out/run_TIMESTAMP/
+├── wpo.json
+├── cdr.json
+├── merkle.json
+└── signature.json   (optional)
+```
+
+Where:
+
+- **WPO** — Wipe Proof Object  
+- **CDR** — Certification Digest Record  
+- **Merkle Root** — Deterministic root hash over artifacts  
+- **Signature** — Ed25519 signature over Merkle root  
+
+---
+
+## Deterministic Guarantee
+
+For identical input:
+
+- WPO hash is identical  
+- CDR hash is identical  
+- Merkle root is identical  
+
+Verification recomputes all hashes and validates integrity.
+
+---
+
+## Security Model
+
+CT-Wipe certifies the integrity of reported wipe metadata.
+
+It does **not**:
+
+- Verify physical data destruction
+- Guarantee hardware-level erase execution
+- Replace forensic validation
+
+It provides cryptographic integrity over the recorded event.
+
+---
+
+## Technical Details
+
+- Canonical JSON serialization
+- SHA-256 hashing
+- Deterministic Merkle root construction
+- Ed25519 signatures
+- CLI-based reproducibility
+
+---
+
+## Status
+
+Version: v0.1  
+Stability: Demo-ready  
+License: TBD  
+
+---
+
+## Roadmap (Non-binding)
+
+- Timestamp authority integration
+- Transparency log anchoring
+- Centralized verification service
+- Enterprise policy layers# CT-Wipe v0.1 — VERIFY
+
+This document specifies the third-party verification procedure for CT-Wipe v0.1 artifacts.
+
+CT-Wipe produces deterministic, tamper-evident certification outputs that can be verified
+without access to any internal system.
+
+---
+
+## What You Are Verifying
+
+A verifier can confirm:
+
+1. **File integrity**: artifact contents match their recorded SHA-256 digests
+2. **Merkle integrity**: the Merkle root matches the digests of the expected leaves
+3. **(Optional) Signature integrity**: an Ed25519 signature validates the Merkle root
+
+If verification passes, the artifacts are internally consistent and have not been modified
+since they were generated.
+
+---
+
+## What You Are NOT Verifying
+
+CT-Wipe verification does NOT prove:
+
+- That the device actually executed a wipe at the hardware level
+- That data is unrecoverable by forensic means
+- That the OS/OEM/MDM procedure was correctly performed
+- That the wipe metadata is truthful
+
+CT-Wipe verifies the **cryptographic integrity** of the recorded certification artifacts.
+
+---
+
+## Artifact Set (Run Directory)
+
+A CT-Wipe run directory contains:
+
+- `wpo.canonical.json` — canonicalized WPO payload bytes
+- `wpo.sha256` — SHA-256 of `wpo.canonical.json` (hex)
+- `cdr.canonical.json` — canonicalized CDR payload bytes
+- `cdr.sha256` — SHA-256 of `cdr.canonical.json` (hex)
+- `merkle_proof.json` — Merkle root + leaf listing
+- `anchor_receipt.json` — anchor receipt (local-only in v0.1)
+- `signature.json` — optional signature record (when signing enabled)
+
+---
+
+## Canonicalization Contract (v0.1)
+
+CT-Wipe canonicalization is deterministic and MUST remain stable for v0.1 verification.
+
+Rules (v0.1):
+
+- JSON keys are sorted (`sort_keys=true`)
+- No whitespace (`separators=(",", ":")`)
+- UTF-8 encoding
+- `ensure_ascii=false`
+
+**Important:** If canonicalization rules change, previously generated hashes will not match.
+For that reason, canonicalization is versioned and treated as a freeze contract.
+
+---
+
+## Merkle Root Contract (v0.1)
+
+CT-Wipe computes a deterministic Merkle root over two leaves:
+
+- `leaf_wpo = "sha256:" + <wpo_sha256_hex>`
+- `leaf_cdr = "sha256:" + <cdr_sha256_hex>`
+
+Root computation rules (v0.1):
+
+- Leaves are provided in this exact order: `[leaf_wpo, leaf_cdr]`
+- Each pair is concatenated as UTF-8 string bytes and hashed with SHA-256
+- If an odd node count occurs at any layer, duplicate the last element
+
+This contract MUST match between generation and verification.
+
+---
+
+## Verification Using the CT-Wipe CLI
+
+From the project root:
+
+### Verify a run directory
+
+```bash
+python3 -m cli.ct_wipe_certify --verify out/run_TIMESTAMP[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mgit add scripts/demo_run.sh README.md VERIFY.md .gitignore[27m
+[7mgit commit -m "Demo runner + doc locks (README/VERIFY) + hygiene" || true[27m[K
+[K
+[7mgit tag -a ct-wipe-v0.1.3 -m "Demo-ready: one-command run + locked docs"[27m[K
+[7mgit push[27m[K
+[7mgit push --tags[27m[K[5A[29C[27mg[27mi[27mt[27m [27ma[27md[27md[27m [27ms[27mc[27mr[27mi[27mp[27mt[27ms[27m/[27md[27me[27mm[27mo[27m_[27mr[27mu[27mn[27m.[27ms[27mh[27m [27mR[27mE[27mA[27mD[27mM[27mE[27m.[27mm[27md[27m [27mV[27mE[27mR[27mI[27mF[27mY[27m.[27mm[27md[27m [27m.[27mg[27mi[27mt[27mi[27mg[27mn[27mo[27mr[27me[1B[27mg[27mi[27mt[27m [27mc[27mo[27mm[27mm[27mi[27mt[27m [27m-[27mm[27m [27m"[27mD[27me[27mm[27mo[27m [27mr[27mu[27mn[27mn[27me[27mr[27m [27m+[27m [27md[27mo[27mc[27m [27ml[27mo[27mc[27mk[27ms[27m [27m([27mR[27mE[27mA[27mD[27mM[27mE[27m/[27mV[27mE[27mR[27mI[27mF[27mY[27m)[27m [27m+[27m [27mh[27my[27mg[27mi[27me[27mn[27me[27m"[27m [27m|[27m|[27m [27mt[27mr[27mu[27me[2B[27mg[27mi[27mt[27m [27mt[27ma[27mg[27m [27m-[27ma[27m [27mc[27mt[27m-[27mw[27mi[27mp[27me[27m-[27mv[27m0[27m.[27m1[27m.[27m3[27m [27m-[27mm[27m [27m"[27mD[27me[27mm[27mo[27m-[27mr[27me[27ma[27md[27my[27m:[27m [27mo[27mn[27me[27m-[27mc[27mo[27mm[27mm[27ma[27mn[27md[27m [27mr[27mu[27mn[27m [27m+[27m [27ml[27mo[27mc[27mk[27me[27md[27m [27md[27mo[27mc[27ms[27m"[1B[27mg[27mi[27mt[27m [27mp[27mu[27ms[27mh[1B[27mg[27mi[27mt[27m [27mp[27mu[27ms[27mh[27m [27m-[27m-[27mt[27ma[27mg[27ms[?2004l
+[master 771ea8a] Demo runner + doc locks (README/VERIFY) + hygiene
+ 1 file changed, 43 insertions(+)
+ create mode 100755 ct-wipe/scripts/demo_run.sh
+Enumerating objects: 12, done.
+Counting objects:   8% (1/12)Counting objects:  16% (2/12)Counting objects:  25% (3/12)Counting objects:  33% (4/12)Counting objects:  41% (5/12)Counting objects:  50% (6/12)Counting objects:  58% (7/12)Counting objects:  66% (8/12)Counting objects:  75% (9/12)Counting objects:  83% (10/12)Counting objects:  91% (11/12)Counting objects: 100% (12/12)Counting objects: 100% (12/12), done.
+Delta compression using up to 4 threads
+Compressing objects:  12% (1/8)Compressing objects:  25% (2/8)Compressing objects:  37% (3/8)Compressing objects:  50% (4/8)Compressing objects:  62% (5/8)Compressing objects:  75% (6/8)Compressing objects:  87% (7/8)Compressing objects: 100% (8/8)Compressing objects: 100% (8/8), done.
+Writing objects:  11% (1/9)Writing objects:  22% (2/9)Writing objects:  33% (3/9)Writing objects:  44% (4/9)Writing objects:  55% (5/9)Writing objects:  66% (6/9)Writing objects:  77% (7/9)Writing objects:  88% (8/9)Writing objects: 100% (9/9)Writing objects: 100% (9/9), 1.45 KiB | 1.45 MiB/s, done.
+Total 9 (delta 5), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/5)[Kremote: Resolving deltas:  20% (1/5)[Kremote: Resolving deltas:  40% (2/5)[Kremote: Resolving deltas:  60% (3/5)[Kremote: Resolving deltas:  80% (4/5)[Kremote: Resolving deltas: 100% (5/5)[Kremote: Resolving deltas: 100% (5/5), completed with 3 local objects.[K
+To https://github.com/Scott-Rowland/CherryTree-Archive.git
+   8fe6316..771ea8a  master -> master
+Enumerating objects: 1, done.
+Counting objects: 100% (1/1)Counting objects: 100% (1/1), done.
+Writing objects: 100% (1/1)Writing objects: 100% (1/1), 203 bytes | 203.00 KiB/s, done.
+Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Scott-Rowland/CherryTree-Archive.git
+ * [new tag]         ct-wipe-v0.1.3 -> ct-wipe-v0.1.3
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mscript -q out/demo_transcript.txt ./scripts/demo_run.sh[27m[55D[27ms[27mc[27mr[27mi[27mp[27mt[27m [27m-[27mq[27m [27mo[27mu[27mt[27m/[27md[27me[27mm[27mo[27m_[27mt[27mr[27ma[27mn[27ms[27mc[27mr[27mi[27mp[27mt[27m.[27mt[27mx[27mt[27m [27m.[27m/[27ms[27mc[27mr[27mi[27mp[27mt[27ms[27m/[27md[27me[27mm[27mo[27m_[27mr[27mu[27mn[27m.[27ms[27mh[?2004l
+CT-Wipe v0.1 complete
+Decision: CERTIFIED
+WPO: sha256:42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: sha256:dcded9da8911a95dfbdc56b166e8396131d54ce4536bf769c2aed0b878c26ecd
+Merkle Root: sha256:441f7260be02765859bbbdaea4c2aa90e843eb12c9c300942207222782cff8a9
+VERIFY PASS
+Run dir: out/demo_run_tmp
+WPO: 42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: dcded9da8911a95dfbdc56b166e8396131d54ce4536bf769c2aed0b878c26ecd
+Merkle Root: 441f7260be02765859bbbdaea4c2aa90e843eb12c9c300942207222782cff8a9
+WROTE out/demo_run_tmp/seckey.demo.b64 (demo key)
+SIGN OK: wrote out/demo_run_tmp/signature.json
+VERIFY PASS
+Run dir: out/demo_run_tmp
+WPO: 42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: dcded9da8911a95dfbdc56b166e8396131d54ce4536bf769c2aed0b878c26ecd
+Merkle Root: 441f7260be02765859bbbdaea4c2aa90e843eb12c9c300942207222782cff8a9
+VERIFY PASS
+Run dir: out/demo_run_tmp
+WPO: 42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: dcded9da8911a95dfbdc56b166e8396131d54ce4536bf769c2aed0b878c26ecd
+Merkle Root: 441f7260be02765859bbbdaea4c2aa90e843eb12c9c300942207222782cff8a9
+
+DEMO COMPLETE -> out/demo_run_tmp
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mgit tag --list "ct-wipe-v0.1.*" | tail -n 5[27m
+[7mgit status[27m[K[A[34C[27mg[27mi[27mt[27m [27mt[27ma[27mg[27m [27m-[27m-[27ml[27mi[27ms[27mt[27m [27m"[27mc[27mt[27m-[27mw[27mi[27mp[27me[27m-[27mv[27m0[27m.[27m1[27m.[27m*[27m"[27m [27m|[27m [27mt[27ma[27mi[27ml[27m [27m-[27mn[27m [27m5[1B[27mg[27mi[27mt[27m [27ms[27mt[27ma[27mt[27mu[27ms[?2004l
+ct-wipe-v0.1.1
+ct-wipe-v0.1.2
+ct-wipe-v0.1.3
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mmkdir -p out[27m
+[7mscript -q out/demo_transcript_ct-wipe-v0.1.3.txt ./scripts/demo_run.sh[27m[K[A[26D[27mm[27mk[27md[27mi[27mr[27m [27m-[27mp[27m [27mo[27mu[27mt[1B[27ms[27mc[27mr[27mi[27mp[27mt[27m [27m-[27mq[27m [27mo[27mu[27mt[27m/[27md[27me[27mm[27mo[27m_[27mt[27mr[27ma[27mn[27ms[27mc[27mr[27mi[27mp[27mt[27m_[27mc[27mt[27m-[27mw[27mi[27mp[27me[27m-[27mv[27m0[27m.[27m1[27m.[27m3[27m.[27mt[27mx[27mt[27m [27m.[27m/[27ms[27mc[27mr[27mi[27mp[27mt[27ms[27m/[27md[27me[27mm[27mo[27m_[27mr[27mu[27mn[27m.[27ms[27mh[?2004l
+CT-Wipe v0.1 complete
+Decision: CERTIFIED
+WPO: sha256:42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: sha256:ec9c7bae8aa077622c303986076b0153e1454eec5b0506df111a6598f7d5bcf3
+Merkle Root: sha256:5919ac2209e0a890fbd92afc6fc965e93458efbb5b1b472ff6f9ee63eea60fef
+VERIFY PASS
+Run dir: out/demo_run_tmp
+WPO: 42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: ec9c7bae8aa077622c303986076b0153e1454eec5b0506df111a6598f7d5bcf3
+Merkle Root: 5919ac2209e0a890fbd92afc6fc965e93458efbb5b1b472ff6f9ee63eea60fef
+WROTE out/demo_run_tmp/seckey.demo.b64 (demo key)
+SIGN OK: wrote out/demo_run_tmp/signature.json
+VERIFY PASS
+Run dir: out/demo_run_tmp
+WPO: 42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: ec9c7bae8aa077622c303986076b0153e1454eec5b0506df111a6598f7d5bcf3
+Merkle Root: 5919ac2209e0a890fbd92afc6fc965e93458efbb5b1b472ff6f9ee63eea60fef
+VERIFY PASS
+Run dir: out/demo_run_tmp
+WPO: 42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: ec9c7bae8aa077622c303986076b0153e1454eec5b0506df111a6598f7d5bcf3
+Merkle Root: 5919ac2209e0a890fbd92afc6fc965e93458efbb5b1b472ff6f9ee63eea60fef
+
+DEMO COMPLETE -> out/demo_run_tmp
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mls -la out | egrep 'demo_transcript|demo_run_tmp' || true[27m
+[7mpython3 -m cli.ct_wipe_certify --verify out/demo_run_tmp[27m[K
+[7mpython3 -m cli.ct_wipe_certify --verify out/demo_run_tmp --verify-signature || true[27m[K[A[A[39D[27ml[27ms[27m [27m-[27ml[27ma[27m [27mo[27mu[27mt[27m [27m|[27m [27me[27mg[27mr[27me[27mp[27m [27m'[27md[27me[27mm[27mo[27m_[27mt[27mr[27ma[27mn[27ms[27mc[27mr[27mi[27mp[27mt[27m|[27md[27me[27mm[27mo[27m_[27mr[27mu[27mn[27m_[27mt[27mm[27mp[27m'[27m [27m|[27m|[27m [27mt[27mr[27mu[27me[1B[27mp[27my[27mt[27mh[27mo[27mn[27m3[27m [27m-[27mm[27m [27mc[27ml[27mi[27m.[27mc[27mt[27m_[27mw[27mi[27mp[27me[27m_[27mc[27me[27mr[27mt[27mi[27mf[27my[27m [27m-[27m-[27mv[27me[27mr[27mi[27mf[27my[27m [27mo[27mu[27mt[27m/[27md[27me[27mm[27mo[27m_[27mr[27mu[27mn[27m_[27mt[27mm[27mp[1B[27mp[27my[27mt[27mh[27mo[27mn[27m3[27m [27m-[27mm[27m [27mc[27ml[27mi[27m.[27mc[27mt[27m_[27mw[27mi[27mp[27me[27m_[27mc[27me[27mr[27mt[27mi[27mf[27my[27m [27m-[27m-[27mv[27me[27mr[27mi[27mf[27my[27m [27mo[27mu[27mt[27m/[27md[27me[27mm[27mo[27m_[27mr[27mu[27mn[27m_[27mt[27mm[27mp[27m [27m-[27m-[27mv[27me[27mr[27mi[27mf[27my[27m-[27ms[27mi[27mg[27mn[27ma[27mt[27mu[27mr[27me[27m [27m|[27m|[27m [27mt[27mr[27mu[27me[?2004l
+drwxr-xr-x   9 robertrowland  staff    288 Mar  2 12:35 demo_run_tmp
+-rw-r--r--   1 robertrowland  staff   1205 Mar  2 12:33 demo_transcript.txt
+-rw-r--r--   1 robertrowland  staff   1205 Mar  2 12:35 demo_transcript_ct-wipe-v0.1.3.txt
+VERIFY PASS
+Run dir: out/demo_run_tmp
+WPO: 42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: ec9c7bae8aa077622c303986076b0153e1454eec5b0506df111a6598f7d5bcf3
+Merkle Root: 5919ac2209e0a890fbd92afc6fc965e93458efbb5b1b472ff6f9ee63eea60fef
+VERIFY PASS
+Run dir: out/demo_run_tmp
+WPO: 42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d
+CDR: ec9c7bae8aa077622c303986076b0153e1454eec5b0506df111a6598f7d5bcf3
+Merkle Root: 5919ac2209e0a890fbd92afc6fc965e93458efbb5b1b472ff6f9ee63eea60fef
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mmkdir -p examples/transcripts[27m
+[7mcp out/demo_transcript_ct-wipe-v0.1.3.txt examples/transcripts/[27m[K
+[7mgit add examples/transcripts/demo_transcript_ct-wipe-v0.1.3.txt[27m[K
+[7mgit commit -m "Add demo transcript (ct-wipe-v0.1.3)"[27m[K
+[7mgit push[27m[K[4A[36C[27mm[27mk[27md[27mi[27mr[27m [27m-[27mp[27m [27me[27mx[27ma[27mm[27mp[27ml[27me[27ms[27m/[27mt[27mr[27ma[27mn[27ms[27mc[27mr[27mi[27mp[27mt[27ms[1B[27mc[27mp[27m [27mo[27mu[27mt[27m/[27md[27me[27mm[27mo[27m_[27mt[27mr[27ma[27mn[27ms[27mc[27mr[27mi[27mp[27mt[27m_[27mc[27mt[27m-[27mw[27mi[27mp[27me[27m-[27mv[27m0[27m.[27m1[27m.[27m3[27m.[27mt[27mx[27mt[27m [27me[27mx[27ma[27mm[27mp[27ml[27me[27ms[27m/[27mt[27mr[27ma[27mn[27ms[27mc[27mr[27mi[27mp[27mt[27ms[27m/[1B[27mg[27mi[27mt[27m [27ma[27md[27md[27m [27me[27mx[27ma[27mm[27mp[27ml[27me[27ms[27m/[27mt[27mr[27ma[27mn[27ms[27mc[27mr[27mi[27mp[27mt[27ms[27m/[27md[27me[27mm[27mo[27m_[27mt[27mr[27ma[27mn[27ms[27mc[27mr[27mi[27mp[27mt[27m_[27mc[27mt[27m-[27mw[27mi[27mp[27me[27m-[27mv[27m0[27m.[27m1[27m.[27m3[27m.[27mt[27mx[27mt[1B[27mg[27mi[27mt[27m [27mc[27mo[27mm[27mm[27mi[27mt[27m [27m-[27mm[27m [27m"[27mA[27md[27md[27m [27md[27me[27mm[27mo[27m [27mt[27mr[27ma[27mn[27ms[27mc[27mr[27mi[27mp[27mt[27m [27m([27mc[27mt[27m-[27mw[27mi[27mp[27me[27m-[27mv[27m0[27m.[27m1[27m.[27m3[27m)[27m"[1B[27mg[27mi[27mt[27m [27mp[27mu[27ms[27mh[?2004l
+[master 1d52dc9] Add demo transcript (ct-wipe-v0.1.3)
+ 1 file changed, 24 insertions(+)
+ create mode 100644 ct-wipe/examples/transcripts/demo_transcript_ct-wipe-v0.1.3.txt
+Enumerating objects: 9, done.
+Counting objects:  11% (1/9)Counting objects:  22% (2/9)Counting objects:  33% (3/9)Counting objects:  44% (4/9)Counting objects:  55% (5/9)Counting objects:  66% (6/9)Counting objects:  77% (7/9)Counting objects:  88% (8/9)Counting objects: 100% (9/9)Counting objects: 100% (9/9), done.
+Delta compression using up to 4 threads
+Compressing objects:  16% (1/6)Compressing objects:  33% (2/6)Compressing objects:  50% (3/6)Compressing objects:  66% (4/6)Compressing objects:  83% (5/6)Compressing objects: 100% (6/6)Compressing objects: 100% (6/6), done.
+Writing objects:  16% (1/6)Writing objects:  33% (2/6)Writing objects:  50% (3/6)Writing objects:  66% (4/6)Writing objects:  83% (5/6)Writing objects: 100% (6/6)Writing objects: 100% (6/6), 870 bytes | 870.00 KiB/s, done.
+Total 6 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/2)[Kremote: Resolving deltas:  50% (1/2)[Kremote: Resolving deltas: 100% (2/2)[Kremote: Resolving deltas: 100% (2/2), completed with 2 local objects.[K
+To https://github.com/Scott-Rowland/CherryTree-Archive.git
+   771ea8a..1d52dc9  master -> master
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mgit remote -v[27m
+[7mgit ls-files | egrep 'seckey|\.b64$' || true[27m[K[A[27mg[27mi[27mt[27m [27mr[27me[27mm[27mo[27mt[27me[27m [27m-[27mv[1B[27mg[27mi[27mt[27m [27ml[27ms[27m-[27mf[27mi[27ml[27me[27ms[27m [27m|[27m [27me[27mg[27mr[27me[27mp[27m [27m'[27ms[27me[27mc[27mk[27me[27my[27m|[27m\[27m.[27mb[27m6[27m4[27m$[27m'[27m [27m|[27m|[27m [27mt[27mr[27mu[27me[?2004l
+origin	https://github.com/Scott-Rowland/CherryTree-Archive.git (fetch)
+origin	https://github.com/Scott-Rowland/CherryTree-Archive.git (push)
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004hppwd[?2004l
+/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7m.../ct-wipe[27m[11D[27m.[27m.[27m.[27m/[27mc[27mt[27m-[27mw[27mi[27mp[27me[?2004l
+zsh: no such file or directory: .../ct-wipe
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004hppwd[?2004l
+/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mhttps://github.com/Scott-Rowland/ct-wipe-certifier.git[27m[54D[27mh[27mt[27mt[27mp[27ms[27m:[27m/[27m/[27mg[27mi[27mt[27mh[27mu[27mb[27m.[27mc[27mo[27mm[27m/[27mS[27mc[27mo[27mt[27mt[27m-[27mR[27mo[27mw[27ml[27ma[27mn[27md[27m/[27mc[27mt[27m-[27mw[27mi[27mp[27me[27m-[27mc[27me[27mr[27mt[27mi[27mf[27mi[27me[27mr[27m.[27mg[27mi[27mt[7mhttps://github.com/Scott-Rowland/ct-wipe-certifier.git[27m[54D[27mh[27mt[27mt[27mp[27ms[27m:[27m/[27m/[27mg[27mi[27mt[27mh[27mu[27mb[27m.[27mc[27mo[27mm[27m/[27mS[27mc[27mo[27mt[27mt[27m-[27mR[27mo[27mw[27ml[27ma[27mn[27md[27m/[27mc[27mt[27m-[27mw[27mi[27mp[27me[27m-[27mc[27me[27mr[27mt[27mi[27mf[27mi[27me[27mr[27m.[27mg[27mi[27mt[?2004l
+zsh: no such file or directory: https://github.com/Scott-Rowland/ct-wipe-certifier.githttps://github.com/Scott-Rowland/ct-wipe-certifier.git
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mgit remote -v[27m[13D[27mg[27mi[27mt[27m [27mr[27me[27mm[27mo[27mt[27me[27m [27m-[27mv[?2004l
+origin	https://github.com/Scott-Rowland/CherryTree-Archive.git (fetch)
+origin	https://github.com/Scott-Rowland/CherryTree-Archive.git (push)
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mgit push public master[27m[22D[27mg[27mi[27mt[27m [27mp[27mu[27ms[27mh[27m [27mp[27mu[27mb[27ml[27mi[27mc[27m [27mm[27ma[27ms[27mt[27me[27mr[?2004l
+fatal: 'public' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mgit remote remove public 2>/dev/null || true[27m[44D[27mg[27mi[27mt[27m [27mr[27me[27mm[27mo[27mt[27me[27m [27mr[27me[27mm[27mo[27mv[27me[27m [27mp[27mu[27mb[27ml[27mi[27mc[27m [27m2[27m>[27m/[27md[27me[27mv[27m/[27mn[27mu[27ml[27ml[27m [27m|[27m|[27m [27mt[27mr[27mu[27me[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mhttps://github.com/Scott-Rowland/ct-wipe-certifier.git[27m[54D[27mh[27mt[27mt[27mp[27ms[27m:[27m/[27m/[27mg[27mi[27mt[27mh[27mu[27mb[27m.[27mc[27mo[27mm[27m/[27mS[27mc[27mo[27mt[27mt[27m-[27mR[27mo[27mw[27ml[27ma[27mn[27md[27m/[27mc[27mt[27m-[27mw[27mi[27mp[27me[27m-[27mc[27me[27mr[27mt[27mi[27mf[27mi[27me[27mr[27m.[27mg[27mi[27mt[7mhttps://github.com/Scott-Rowland/ct-wipe-certifier.git[27m[54D[27mh[27mt[27mt[27mp[27ms[27m:[27m/[27m/[27mg[27mi[27mt[27mh[27mu[27mb[27m.[27mc[27mo[27mm[27m/[27mS[27mc[27mo[27mt[27mt[27m-[27mR[27mo[27mw[27ml[27ma[27mn[27md[27m/[27mc[27mt[27m-[27mw[27mi[27mp[27me[27m-[27mc[27me[27mr[27mt[27mi[27mf[27mi[27me[27mr[27m.[27mg[27mi[27mt[?2004l
+zsh: no such file or directory: https://github.com/Scott-Rowland/ct-wipe-certifier.githttps://github.com/Scott-Rowland/ct-wipe-certifier.git
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mgit remote -v[27m[13D[27mg[27mi[27mt[27m [27mr[27me[27mm[27mo[27mt[27me[27m [27m-[27mv[?2004l
+origin	https://github.com/Scott-Rowland/CherryTree-Archive.git (fetch)
+origin	https://github.com/Scott-Rowland/CherryTree-Archive.git (push)
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mgit remote remove public 2>/dev/null || true[27m
+[K
+[7mgit remote add public https://github.com/Scott-Rowland/ct-wipe-certifier.git[27m[K
+[K
+[7mgit remote -v[27m[K[4A[31C[27mg[27mi[27mt[27m [27mr[27me[27mm[27mo[27mt[27me[27m [27mr[27me[27mm[27mo[27mv[27me[27m [27mp[27mu[27mb[27ml[27mi[27mc[27m [27m2[27m>[27m/[27md[27me[27mv[27m/[27mn[27mu[27ml[27ml[27m [27m|[27m|[27m [27mt[27mr[27mu[27me[2B[27mg[27mi[27mt[27m [27mr[27me[27mm[27mo[27mt[27me[27m [27ma[27md[27md[27m [27mp[27mu[27mb[27ml[27mi[27mc[27m [27mh[27mt[27mt[27mp[27ms[27m:[27m/[27m/[27mg[27mi[27mt[27mh[27mu[27mb[27m.[27mc[27mo[27mm[27m/[27mS[27mc[27mo[27mt[27mt[27m-[27mR[27mo[27mw[27ml[27ma[27mn[27md[27m/[27mc[27mt[27m-[27mw[27mi[27mp[27me[27m-[27mc[27me[27mr[27mt[27mi[27mf[27mi[27me[27mr[27m.[27mg[27mi[27mt[2B[27mg[27mi[27mt[27m [27mr[27me[27mm[27mo[27mt[27me[27m [27m-[27mv[?2004l
+origin	https://github.com/Scott-Rowland/CherryTree-Archive.git (fetch)
+origin	https://github.com/Scott-Rowland/CherryTree-Archive.git (push)
+public	https://github.com/Scott-Rowland/ct-wipe-certifier.git (fetch)
+public	https://github.com/Scott-Rowland/ct-wipe-certifier.git (push)
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mgit push public master[27m
+[7mgit push public --tags[27m[K[A[22C[27mg[27mi[27mt[27m [27mp[27mu[27ms[27mh[27m [27mp[27mu[27mb[27ml[27mi[27mc[27m [27mm[27ma[27ms[27mt[27me[27mr[1B[27mg[27mi[27mt[27m [27mp[27mu[27ms[27mh[27m [27mp[27mu[27mb[27ml[27mi[27mc[27m [27m-[27m-[27mt[27ma[27mg[27ms[?2004l
+Enumerating objects: 771, done.
+Counting objects:   0% (1/771)Counting objects:   1% (8/771)Counting objects:   2% (16/771)Counting objects:   3% (24/771)Counting objects:   4% (31/771)Counting objects:   5% (39/771)Counting objects:   6% (47/771)Counting objects:   7% (54/771)Counting objects:   8% (62/771)Counting objects:   9% (70/771)Counting objects:  10% (78/771)Counting objects:  11% (85/771)Counting objects:  12% (93/771)Counting objects:  13% (101/771)Counting objects:  14% (108/771)Counting objects:  15% (116/771)Counting objects:  16% (124/771)Counting objects:  17% (132/771)Counting objects:  18% (139/771)Counting objects:  19% (147/771)Counting objects:  20% (155/771)Counting objects:  21% (162/771)Counting objects:  22% (170/771)Counting objects:  23% (178/771)Counting objects:  24% (186/771)Counting objects:  25% (193/771)Counting objects:  26% (201/771)Counting objects:  27% (209/771)Counting objects:  28% (216/771)Counting objects:  29% (224/771)Counting objects:  30% (232/771)Counting objects:  31% (240/771)Counting objects:  32% (247/771)Counting objects:  33% (255/771)Counting objects:  34% (263/771)Counting objects:  35% (270/771)Counting objects:  36% (278/771)Counting objects:  37% (286/771)Counting objects:  38% (293/771)Counting objects:  39% (301/771)Counting objects:  40% (309/771)Counting objects:  41% (317/771)Counting objects:  42% (324/771)Counting objects:  43% (332/771)Counting objects:  44% (340/771)Counting objects:  45% (347/771)Counting objects:  46% (355/771)Counting objects:  47% (363/771)Counting objects:  48% (371/771)Counting objects:  49% (378/771)Counting objects:  50% (386/771)Counting objects:  51% (394/771)Counting objects:  52% (401/771)Counting objects:  53% (409/771)Counting objects:  54% (417/771)Counting objects:  55% (425/771)Counting objects:  56% (432/771)Counting objects:  57% (440/771)Counting objects:  58% (448/771)Counting objects:  59% (455/771)Counting objects:  60% (463/771)Counting objects:  61% (471/771)Counting objects:  62% (479/771)Counting objects:  63% (486/771)Counting objects:  64% (494/771)Counting objects:  65% (502/771)Counting objects:  66% (509/771)Counting objects:  67% (517/771)Counting objects:  68% (525/771)Counting objects:  69% (532/771)Counting objects:  70% (540/771)Counting objects:  71% (548/771)Counting objects:  72% (556/771)Counting objects:  73% (563/771)Counting objects:  74% (571/771)Counting objects:  75% (579/771)Counting objects:  76% (586/771)Counting objects:  77% (594/771)Counting objects:  78% (602/771)Counting objects:  79% (610/771)Counting objects:  80% (617/771)Counting objects:  81% (625/771)Counting objects:  82% (633/771)Counting objects:  83% (640/771)Counting objects:  84% (648/771)Counting objects:  85% (656/771)Counting objects:  86% (664/771)Counting objects:  87% (671/771)Counting objects:  88% (679/771)Counting objects:  89% (687/771)Counting objects:  90% (694/771)Counting objects:  91% (702/771)Counting objects:  92% (710/771)Counting objects:  93% (718/771)Counting objects:  94% (725/771)Counting objects:  95% (733/771)Counting objects:  96% (741/771)Counting objects:  97% (748/771)Counting objects:  98% (756/771)Counting objects:  99% (764/771)Counting objects: 100% (771/771)Counting objects: 100% (771/771), done.
+Delta compression using up to 4 threads
+Compressing objects:   0% (1/740)Compressing objects:   1% (8/740)Compressing objects:   2% (15/740)Compressing objects:   3% (23/740)Compressing objects:   4% (30/740)Compressing objects:   5% (37/740)Compressing objects:   6% (45/740)Compressing objects:   7% (52/740)Compressing objects:   8% (60/740)Compressing objects:   9% (67/740)Compressing objects:  10% (74/740)Compressing objects:  11% (82/740)Compressing objects:  12% (89/740)Compressing objects:  13% (97/740)Compressing objects:  14% (104/740)Compressing objects:  15% (111/740)Compressing objects:  16% (119/740)Compressing objects:  17% (126/740)Compressing objects:  18% (134/740)Compressing objects:  19% (141/740)Compressing objects:  20% (148/740)Compressing objects:  21% (156/740)Compressing objects:  22% (163/740)Compressing objects:  23% (171/740)Compressing objects:  24% (178/740)Compressing objects:  25% (185/740)Compressing objects:  26% (193/740)Compressing objects:  27% (200/740)Compressing objects:  28% (208/740)Compressing objects:  29% (215/740)Compressing objects:  30% (222/740)Compressing objects:  31% (230/740)Compressing objects:  32% (237/740)Compressing objects:  33% (245/740)Compressing objects:  34% (252/740)Compressing objects:  35% (259/740)Compressing objects:  36% (267/740)Compressing objects:  37% (274/740)Compressing objects:  38% (282/740)Compressing objects:  39% (289/740)Compressing objects:  40% (296/740)Compressing objects:  41% (304/740)Compressing objects:  42% (311/740)Compressing objects:  43% (319/740)Compressing objects:  44% (326/740)Compressing objects:  45% (333/740)Compressing objects:  46% (341/740)Compressing objects:  47% (348/740)Compressing objects:  48% (356/740)Compressing objects:  49% (363/740)Compressing objects:  50% (370/740)Compressing objects:  51% (378/740)Compressing objects:  52% (385/740)Compressing objects:  53% (393/740)Compressing objects:  54% (400/740)Compressing objects:  55% (407/740)Compressing objects:  56% (415/740)Compressing objects:  57% (422/740)Compressing objects:  58% (430/740)Compressing objects:  59% (437/740)Compressing objects:  60% (444/740)Compressing objects:  61% (452/740)Compressing objects:  62% (459/740)Compressing objects:  63% (467/740)Compressing objects:  64% (474/740)Compressing objects:  65% (481/740)Compressing objects:  66% (489/740)Compressing objects:  67% (496/740)Compressing objects:  68% (504/740)Compressing objects:  69% (511/740)Compressing objects:  70% (518/740)Compressing objects:  71% (526/740)Compressing objects:  72% (533/740)Compressing objects:  73% (541/740)Compressing objects:  74% (548/740)Compressing objects:  75% (555/740)Compressing objects:  76% (563/740)Compressing objects:  77% (570/740)Compressing objects:  78% (578/740)Compressing objects:  79% (585/740)Compressing objects:  80% (592/740)Compressing objects:  81% (600/740)Compressing objects:  82% (607/740)Compressing objects:  83% (615/740)Compressing objects:  84% (622/740)Compressing objects:  85% (629/740)Compressing objects:  86% (637/740)Compressing objects:  87% (644/740)Compressing objects:  88% (652/740)Compressing objects:  89% (659/740)Compressing objects:  90% (666/740)Compressing objects:  91% (674/740)Compressing objects:  92% (681/740)Compressing objects:  93% (689/740)Compressing objects:  94% (696/740)Compressing objects:  95% (703/740)Compressing objects:  96% (711/740)Compressing objects:  97% (718/740)Compressing objects:  98% (726/740)Compressing objects:  99% (733/740)Compressing objects: 100% (740/740)Compressing objects: 100% (740/740), done.
+Writing objects:   0% (1/771)Writing objects:   1% (8/771)Writing objects:   2% (16/771)Writing objects:   3% (24/771)Writing objects:   4% (31/771)Writing objects:   5% (39/771)Writing objects:   6% (47/771)Writing objects:   7% (54/771)Writing objects:   8% (62/771)Writing objects:   9% (70/771)Writing objects:  10% (78/771)Writing objects:  11% (85/771)Writing objects:  12% (93/771)Writing objects:  13% (101/771)Writing objects:  14% (108/771)Writing objects:  15% (116/771)Writing objects:  16% (124/771)Writing objects:  17% (132/771)Writing objects:  18% (139/771)Writing objects:  19% (147/771)Writing objects:  20% (155/771)Writing objects:  21% (162/771)Writing objects:  22% (170/771)Writing objects:  23% (178/771)Writing objects:  24% (186/771)Writing objects:  25% (193/771)Writing objects:  26% (201/771)Writing objects:  27% (209/771)Writing objects:  28% (216/771)Writing objects:  29% (224/771)Writing objects:  30% (232/771)Writing objects:  31% (240/771)Writing objects:  32% (247/771)Writing objects:  33% (255/771)Writing objects:  34% (263/771)Writing objects:  35% (270/771)Writing objects:  36% (278/771)Writing objects:  37% (286/771)Writing objects:  38% (293/771)Writing objects:  39% (301/771)Writing objects:  40% (309/771)Writing objects:  41% (317/771)Writing objects:  42% (324/771)Writing objects:  43% (332/771)Writing objects:  44% (340/771)Writing objects:  45% (347/771)Writing objects:  46% (355/771)Writing objects:  47% (363/771)Writing objects:  48% (371/771)Writing objects:  49% (378/771)Writing objects:  50% (386/771), 1.07 MiB | 2.10 MiB/sWriting objects:  51% (394/771), 1.07 MiB | 2.10 MiB/sWriting objects:  51% (400/771), 2.88 MiB | 2.20 MiB/sWriting objects:  52% (401/771), 2.88 MiB | 2.20 MiB/sWriting objects:  53% (409/771), 2.88 MiB | 2.20 MiB/sWriting objects:  54% (417/771), 2.88 MiB | 2.20 MiB/sWriting objects:  55% (425/771), 2.88 MiB | 2.20 MiB/sWriting objects:  56% (432/771), 2.88 MiB | 2.20 MiB/sWriting objects:  57% (440/771), 2.88 MiB | 2.20 MiB/sWriting objects:  58% (448/771), 2.88 MiB | 2.20 MiB/sWriting objects:  59% (455/771), 2.88 MiB | 2.20 MiB/sWriting objects:  60% (463/771), 2.88 MiB | 2.20 MiB/sWriting objects:  61% (471/771), 2.88 MiB | 2.20 MiB/sWriting objects:  61% (477/771), 4.78 MiB | 1.69 MiB/sWriting objects:  61% (478/771), 4.78 MiB | 1.69 MiB/sWriting objects:  62% (479/771), 4.78 MiB | 1.69 MiB/sWriting objects:  63% (486/771), 4.96 MiB | 1.49 MiB/sWriting objects:  64% (494/771), 4.96 MiB | 1.49 MiB/sWriting objects:  64% (498/771), 5.27 MiB | 1.36 MiB/sWriting objects:  65% (502/771), 5.84 MiB | 1.33 MiB/sWriting objects:  66% (509/771), 5.84 MiB | 1.33 MiB/sWriting objects:  66% (513/771), 6.70 MiB | 1.20 MiB/sWriting objects:  66% (513/771), 7.93 MiB | 1.30 MiB/sWriting objects:  66% (513/771), 10.18 MiB | 1.25 MiB/sWriting objects:  66% (513/771), 12.68 MiB | 1.60 MiB/sWriting objects:  66% (513/771), 14.99 MiB | 1.90 MiB/sWriting objects:  66% (513/771), 17.24 MiB | 2.25 MiB/sWriting objects:  66% (513/771), 19.55 MiB | 2.25 MiB/sWriting objects:  66% (513/771), 21.62 MiB | 2.15 MiB/sWriting objects:  66% (514/771), 22.62 MiB | 2.12 MiB/sWriting objects:  66% (514/771), 23.70 MiB | 1.82 MiB/sWriting objects:  66% (514/771), 26.36 MiB | 1.91 MiB/sWriting objects:  66% (514/771), 28.92 MiB | 1.97 MiB/sWriting objects:  66% (514/771), 30.86 MiB | 1.91 MiB/sWriting objects:  66% (514/771), 33.44 MiB | 2.01 MiB/sWriting objects:  66% (514/771), 35.69 MiB | 2.19 MiB/sWriting objects:  66% (514/771), 36.73 MiB | 2.12 MiB/sWriting objects:  66% (514/771), 39.16 MiB | 2.08 MiB/sWriting objects:  66% (514/771), 41.47 MiB | 2.19 MiB/sWriting objects:  67% (517/771), 41.47 MiB | 2.19 MiB/sWriting objects:  68% (525/771), 41.47 MiB | 2.19 MiB/sWriting objects:  69% (532/771), 41.47 MiB | 2.19 MiB/sWriting objects:  70% (540/771), 41.47 MiB | 2.19 MiB/sWriting objects:  71% (548/771), 41.47 MiB | 2.19 MiB/sWriting objects:  72% (556/771), 42.66 MiB | 2.15 MiB/sWriting objects:  73% (563/771), 42.66 MiB | 2.15 MiB/sWriting objects:  73% (566/771), 43.77 MiB | 2.14 MiB/sWriting objects:  73% (567/771), 46.25 MiB | 2.19 MiB/sWriting objects:  73% (568/771), 48.52 MiB | 2.28 MiB/sWriting objects:  74% (571/771), 48.52 MiB | 2.28 MiB/sWriting objects:  75% (579/771), 48.52 MiB | 2.28 MiB/sWriting objects:  76% (586/771), 48.52 MiB | 2.28 MiB/sWriting objects:  77% (594/771), 48.52 MiB | 2.28 MiB/sWriting objects:  78% (602/771), 48.52 MiB | 2.28 MiB/sWriting objects:  79% (610/771), 48.52 MiB | 2.28 MiB/sWriting objects:  80% (617/771), 48.52 MiB | 2.28 MiB/sWriting objects:  81% (625/771), 48.52 MiB | 2.28 MiB/sWriting objects:  82% (633/771), 48.52 MiB | 2.28 MiB/sWriting objects:  83% (640/771), 49.58 MiB | 2.27 MiB/sWriting objects:  84% (648/771), 49.58 MiB | 2.27 MiB/sWriting objects:  85% (656/771), 49.58 MiB | 2.27 MiB/sWriting objects:  86% (664/771), 49.58 MiB | 2.27 MiB/sWriting objects:  87% (671/771), 49.58 MiB | 2.27 MiB/sWriting objects:  87% (675/771), 49.58 MiB | 2.27 MiB/sWriting objects:  88% (679/771), 49.58 MiB | 2.27 MiB/sWriting objects:  89% (687/771), 49.58 MiB | 2.27 MiB/sWriting objects:  90% (694/771), 49.58 MiB | 2.27 MiB/sWriting objects:  91% (702/771), 50.55 MiB | 2.23 MiB/sWriting objects:  92% (710/771), 50.55 MiB | 2.23 MiB/sWriting objects:  93% (718/771), 50.55 MiB | 2.23 MiB/sWriting objects:  94% (725/771), 50.55 MiB | 2.23 MiB/sWriting objects:  95% (733/771), 50.55 MiB | 2.23 MiB/sWriting objects:  96% (741/771), 50.55 MiB | 2.23 MiB/sWriting objects:  97% (748/771), 50.55 MiB | 2.23 MiB/sWriting objects:  98% (756/771), 51.59 MiB | 2.20 MiB/sWriting objects:  98% (758/771), 51.59 MiB | 2.20 MiB/sWriting objects:  99% (764/771), 51.59 MiB | 2.20 MiB/sWriting objects: 100% (771/771), 51.59 MiB | 2.20 MiB/sWriting objects: 100% (771/771), 52.60 MiB | 1.94 MiB/s, done.
+Total 771 (delta 228), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/228)[Kremote: Resolving deltas:   1% (3/228)[Kremote: Resolving deltas:   2% (5/228)[Kremote: Resolving deltas:   3% (7/228)[Kremote: Resolving deltas:   4% (10/228)[Kremote: Resolving deltas:   5% (12/228)[Kremote: Resolving deltas:   6% (14/228)[Kremote: Resolving deltas:   7% (16/228)[Kremote: Resolving deltas:   8% (19/228)[Kremote: Resolving deltas:   9% (21/228)[Kremote: Resolving deltas:  10% (23/228)[Kremote: Resolving deltas:  11% (26/228)[Kremote: Resolving deltas:  12% (28/228)[Kremote: Resolving deltas:  13% (30/228)[Kremote: Resolving deltas:  14% (32/228)[Kremote: Resolving deltas:  15% (35/228)[Kremote: Resolving deltas:  16% (37/228)[Kremote: Resolving deltas:  17% (39/228)[Kremote: Resolving deltas:  18% (42/228)[Kremote: Resolving deltas:  19% (44/228)[Kremote: Resolving deltas:  20% (46/228)[Kremote: Resolving deltas:  21% (48/228)[Kremote: Resolving deltas:  22% (51/228)[Kremote: Resolving deltas:  23% (53/228)[Kremote: Resolving deltas:  24% (55/228)[Kremote: Resolving deltas:  25% (57/228)[Kremote: Resolving deltas:  26% (60/228)[Kremote: Resolving deltas:  27% (62/228)[Kremote: Resolving deltas:  28% (64/228)[Kremote: Resolving deltas:  29% (67/228)[Kremote: Resolving deltas:  30% (69/228)[Kremote: Resolving deltas:  31% (71/228)[Kremote: Resolving deltas:  32% (73/228)[Kremote: Resolving deltas:  33% (76/228)[Kremote: Resolving deltas:  34% (78/228)[Kremote: Resolving deltas:  35% (80/228)[Kremote: Resolving deltas:  36% (83/228)[Kremote: Resolving deltas:  37% (85/228)[Kremote: Resolving deltas:  38% (87/228)[Kremote: Resolving deltas:  39% (89/228)[Kremote: Resolving deltas:  40% (92/228)[Kremote: Resolving deltas:  41% (94/228)[Kremote: Resolving deltas:  42% (96/228)[Kremote: Resolving deltas:  43% (99/228)[Kremote: Resolving deltas:  44% (101/228)[Kremote: Resolving deltas:  45% (103/228)[Kremote: Resolving deltas:  46% (105/228)[Kremote: Resolving deltas:  47% (108/228)[Kremote: Resolving deltas:  48% (110/228)[Kremote: Resolving deltas:  49% (112/228)[Kremote: Resolving deltas:  50% (114/228)[Kremote: Resolving deltas:  51% (117/228)[Kremote: Resolving deltas:  52% (119/228)[Kremote: Resolving deltas:  53% (121/228)[Kremote: Resolving deltas:  54% (124/228)[Kremote: Resolving deltas:  55% (126/228)[Kremote: Resolving deltas:  56% (128/228)[Kremote: Resolving deltas:  57% (130/228)[Kremote: Resolving deltas:  58% (133/228)[Kremote: Resolving deltas:  59% (135/228)[Kremote: Resolving deltas:  60% (137/228)[Kremote: Resolving deltas:  61% (140/228)[Kremote: Resolving deltas:  62% (142/228)[Kremote: Resolving deltas:  63% (144/228)[Kremote: Resolving deltas:  64% (146/228)[Kremote: Resolving deltas:  65% (149/228)[Kremote: Resolving deltas:  66% (151/228)[Kremote: Resolving deltas:  67% (153/228)[Kremote: Resolving deltas:  68% (156/228)[Kremote: Resolving deltas:  69% (158/228)[Kremote: Resolving deltas:  70% (160/228)[Kremote: Resolving deltas:  71% (162/228)[Kremote: Resolving deltas:  72% (165/228)[Kremote: Resolving deltas:  73% (167/228)[Kremote: Resolving deltas:  74% (169/228)[Kremote: Resolving deltas:  75% (171/228)[Kremote: Resolving deltas:  76% (174/228)[Kremote: Resolving deltas:  77% (176/228)[Kremote: Resolving deltas:  78% (178/228)[Kremote: Resolving deltas:  79% (181/228)[Kremote: Resolving deltas:  80% (183/228)[Kremote: Resolving deltas:  81% (185/228)[Kremote: Resolving deltas:  82% (187/228)[Kremote: Resolving deltas:  83% (190/228)[Kremote: Resolving deltas:  84% (192/228)[Kremote: Resolving deltas:  85% (194/228)[Kremote: Resolving deltas:  86% (197/228)[Kremote: Resolving deltas:  87% (199/228)[Kremote: Resolving deltas:  88% (201/228)[Kremote: Resolving deltas:  89% (203/228)[Kremote: Resolving deltas:  90% (206/228)[Kremote: Resolving deltas:  91% (208/228)[Kremote: Resolving deltas:  92% (210/228)[Kremote: Resolving deltas:  93% (213/228)[Kremote: Resolving deltas:  94% (215/228)[Kremote: Resolving deltas:  95% (217/228)[Kremote: Resolving deltas:  96% (219/228)[Kremote: Resolving deltas:  97% (222/228)[Kremote: Resolving deltas:  98% (224/228)[Kremote: Resolving deltas:  99% (226/228)[Kremote: Resolving deltas: 100% (228/228)[Kremote: Resolving deltas: 100% (228/228), done.[K
+To https://github.com/Scott-Rowland/ct-wipe-certifier.git
+ * [new branch]      master -> master
+Enumerating objects: 12, done.
+Counting objects:   8% (1/12)Counting objects:  16% (2/12)Counting objects:  25% (3/12)Counting objects:  33% (4/12)Counting objects:  41% (5/12)Counting objects:  50% (6/12)Counting objects:  58% (7/12)Counting objects:  66% (8/12)Counting objects:  75% (9/12)Counting objects:  83% (10/12)Counting objects:  91% (11/12)Counting objects: 100% (12/12)Counting objects: 100% (12/12), done.
+Delta compression using up to 4 threads
+Compressing objects:   8% (1/12)Compressing objects:  16% (2/12)Compressing objects:  25% (3/12)Compressing objects:  33% (4/12)Compressing objects:  41% (5/12)Compressing objects:  50% (6/12)Compressing objects:  58% (7/12)Compressing objects:  66% (8/12)Compressing objects:  75% (9/12)Compressing objects:  83% (10/12)Compressing objects:  91% (11/12)Compressing objects: 100% (12/12)Compressing objects: 100% (12/12), done.
+Writing objects:   8% (1/12)Writing objects:  16% (2/12)Writing objects:  25% (3/12)Writing objects:  33% (4/12)Writing objects:  41% (5/12)Writing objects:  50% (6/12)Writing objects:  58% (7/12)Writing objects:  66% (8/12)Writing objects:  75% (9/12)Writing objects:  83% (10/12)Writing objects:  91% (11/12)Writing objects: 100% (12/12)Writing objects: 100% (12/12), 2.39 KiB | 613.00 KiB/s, done.
+Total 12 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Scott-Rowland/ct-wipe-certifier.git
+ * [new tag]         CHERRYSEASON_MVP_v1.1.0_FREEZE -> CHERRYSEASON_MVP_v1.1.0_FREEZE
+ * [new tag]         CT-MasterIndex-v0.2.15 -> CT-MasterIndex-v0.2.15
+ * [new tag]         FREEZE-2026-01-31T041047Z -> FREEZE-2026-01-31T041047Z
+ * [new tag]         FREEZE-2026-01-31T041051Z -> FREEZE-2026-01-31T041051Z
+ * [new tag]         FREEZE-20260203T220506Z -> FREEZE-20260203T220506Z
+ * [new tag]         FREEZE-20260203T220506Z-FIX1 -> FREEZE-20260203T220506Z-FIX1
+ * [new tag]         FREEZE-CHERRYSEASON-MVP-20260203T233308Z -> FREEZE-CHERRYSEASON-MVP-20260203T233308Z
+ * [new tag]         FREEZE-CHERRYSEASON-SRC-20260204T044414Z -> FREEZE-CHERRYSEASON-SRC-20260204T044414Z
+ * [new tag]         FREEZE-PRE-MVP-2026-02-03T024726Z -> FREEZE-PRE-MVP-2026-02-03T024726Z
+ * [new tag]         LEDGER-FREEZE-CHERRYSEASON-MVP-v1.1.0-20260203T233308Z -> LEDGER-FREEZE-CHERRYSEASON-MVP-v1.1.0-20260203T233308Z
+ * [new tag]         PHASE-3.2-COMPLETE -> PHASE-3.2-COMPLETE
+ * [new tag]         PHASE-3.3-COMPLETE -> PHASE-3.3-COMPLETE
+ * [new tag]         PHASE-POST-FREEZE-NOTICE-COMPLETE -> PHASE-POST-FREEZE-NOTICE-COMPLETE
+ * [new tag]         PHASE-QUIET-LAUNCH-READY -> PHASE-QUIET-LAUNCH-READY
+ * [new tag]         SNAPSHOT-PAUSE-2026-02-04 -> SNAPSHOT-PAUSE-2026-02-04
+ * [new tag]         ct-wipe-v0.1 -> ct-wipe-v0.1
+ * [new tag]         ct-wipe-v0.1.1 -> ct-wipe-v0.1.1
+ * [new tag]         ct-wipe-v0.1.2 -> ct-wipe-v0.1.2
+ * [new tag]         ct-wipe-v0.1.3 -> ct-wipe-v0.1.3
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/Cherrytreemaster/ct-wipe[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe % [K[?2004h[7mcd ~/Desktop[27m
+[7mmkdir ct-wipe-public[27m[K
+[7mcd ct-wipe-public[27m[K[A[A[27C[27mc[27md[27m [27m~[27m/[27mD[27me[27ms[27mk[27mt[27mo[27mp[1B[27mm[27mk[27md[27mi[27mr[27m [27mc[27mt[27m-[27mw[27mi[27mp[27me[27m-[27mp[27mu[27mb[27ml[27mi[27mc[1B[27mc[27md[27m [27mc[27mt[27m-[27mw[27mi[27mp[27me[27m-[27mp[27mu[27mb[27ml[27mi[27mc[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                           ]7;file://Roberts-MacBook-Pro.local/Users/robertrowland/Desktop/ct-wipe-public[0m[27m[24m[Jrobertrowland@Roberts-MacBook-Pro ct-wipe-public % [K[?2004h

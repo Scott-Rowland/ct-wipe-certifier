@@ -1,0 +1,1 @@
+{"canon":{"version":"CT-CANON-v0.1"},"cdr_version":"1.0","created_utc":"2026-03-02T03:17:51.697635+00:00","decision":{"failures":[],"result":"CERTIFIED"},"inputs":{"policy_id":"CT-WIPE-T1-CRYPTO-ERASE","wpo_id":"wpo_test_001","wpo_payload_sha256":"sha256:42017f38ce39fbb527f612e606a2e38e1de7e21739a69888f9ac92b7cdaf683d"},"object_type":"CT.CDR"}
