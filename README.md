@@ -11,6 +11,22 @@ The system does not perform device wiping.
 
 Instead it produces **cryptographically verifiable state-transition artifacts** that allow independent systems or auditors to prove that a wipe event occurred and was recorded without tampering.
 
+---
+
+## Design Goals
+
+CT-Wipe is designed to provide a minimal, deterministic primitive for producing verifiable state-transition artifacts.
+
+The design prioritizes:
+
+- Deterministic cryptographic artifact generation  
+- Independent verification by third parties  
+- Reproducible outputs from identical inputs  
+- Compatibility with automated infrastructure workflows  
+- Minimal trusted components
+
+---
+
 ### Deterministic Cryptographic Wipe Certification
 
 CT-Wipe is a command-line tool that produces tamper-evident,
@@ -50,6 +66,18 @@ CT-Wipe provides:
 - Reproducible verification
 
 The same input produces identical certification artifacts.
+
+---
+
+## Intellectual Property Notice
+
+Certain methods and architectures related to CT-Wipe are subject to patent filings.
+
+Patent Status: **Patent Pending**
+
+This repository provides a reference implementation of the CT-Wipe deterministic verification primitive for research, evaluation, and integration purposes.
+
+Use of this repository does not grant rights to any patent claims that may exist now or in the future covering related architectures or extended capabilities.
 
 ---
 
