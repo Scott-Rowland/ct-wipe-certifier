@@ -1,4 +1,11 @@
 # CT-Wipe v0.1  
+
+## Design Principle
+
+CT-Wipe is implemented as a **deterministic verification primitive**, not a wipe utility.
+The system does not perform device wiping.  
+
+Instead it produces **cryptographically verifiable state-transition artifacts** that allow independent systems or auditors to prove that a wipe event occurred and was recorded without tampering.
 Deterministic Cryptographic Wipe Certification
 
 CT-Wipe is a command-line tool that produces tamper-evident,
