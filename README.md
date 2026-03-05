@@ -18,17 +18,17 @@ that can be independently verified.
 ### Example Automation Pipeline
 
 CT-Wipe is designed to operate as a verification primitive within automated lifecycle workflows.
----
+...
 Device / Asset
-↓
+↓...
 Wipe or Crypto-Erase Operation
-↓
+↓...
 CT-Wipe Certification Artifact
-↓
+↓...
 Hash / Merkle Root Anchoring
-↓
+↓...
 Independent Verification (audit, compliance, or automation systems)
----
+...
 ### What Problem This Solves
 
 Most device wipe processes produce logs — not cryptographic proof.
