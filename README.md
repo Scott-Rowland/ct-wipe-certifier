@@ -1,6 +1,6 @@
 # CT-Wipe v0.1  
 
-CT-Wipe is a deterministic cryptographic verification primitive for generating tamper-evident certification artifacts for device wipe and cryptographic erase events.
+CT-Wipe is a deterministic state-transition certification primitive, specialized for wipe / crypto-erase events.
 
 Category: **verification infrastructure / provenance artifact generation**
 
@@ -173,6 +173,35 @@ It provides cryptographic integrity over the recorded event.
 - Deterministic Merkle root construction
 - Ed25519 signatures
 - CLI-based reproducibility
+
+---
+
+## Repository Structure
+
+src/           core certification logic  
+schemas/       artifact schemas  
+examples/      sample certification artifacts  
+cli/           command-line interface  
+docs/          design notes and specifications
+
+---
+
+### Verify a Certification Artifact
+
+After generating a certification artifact, it can be independently verified.
+
+```bash 
+ct-wipe verify artifact.json
+
+```
+
+Expected output:
+
+```
+artifact hash: verified
+merkle root: verified
+signature: valid
+```
 
 ---
 
