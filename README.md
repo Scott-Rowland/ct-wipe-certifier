@@ -15,6 +15,19 @@ deterministic certification artifacts for device wipe and cryptographic erase ev
 It generates reproducible hash-linked records and optional Ed25519 signatures
 that can be independently verified.
 
+### Example Automation Pipeline
+
+CT-Wipe is designed to operate as a verification primitive within automated lifecycle workflows.
+
+Device / Asset
+      ↓
+Wipe or Crypto-Erase Operation
+      ↓
+CT-Wipe Certification Artifact
+      ↓
+Hash / Merkle Root Anchoring
+      ↓
+Independent Verification (audit, compliance, or automation systems)
 ---
 
 ## What Problem This Solves
