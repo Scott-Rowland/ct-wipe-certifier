@@ -1,5 +1,9 @@
 # CT-Wipe v0.1  
 
+CT-Wipe is a deterministic cryptographic verification primitive for generating tamper-evident certification artifacts for device wipe and cryptographic erase events.
+
+Category: **verification infrastructure / provenance artifact generation**
+
 ### Design Principle
 
 CT-Wipe is implemented as a **deterministic verification primitive**, not a wipe utility.
