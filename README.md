@@ -19,7 +19,7 @@ that can be independently verified.
 
 CT-Wipe is designed to operate as a verification primitive within automated lifecycle workflows.
 
-...
+```
 
 Device / Asset
 ↓
@@ -31,7 +31,7 @@ Hash / Merkle Root Anchoring
 ↓
 Independent Verification (audit, compliance, or automation systems)
 
-...
+```
 
 ### What Problem This Solves
 
