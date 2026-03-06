@@ -1,5 +1,7 @@
 # CT-Wipe v0.1  
 
+Deterministic certification primitive for cryptographic proof of device wipe and erase state transitions.
+
 CT-Wipe is a deterministic **state-transition certification primitive** specialized for device wipe and cryptographic erase events.
 
 Category: **verification infrastructure / cryptographic provenance**
