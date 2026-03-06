@@ -178,11 +178,14 @@ It provides cryptographic integrity over the recorded event.
 
 ## Repository Structure
 
-src/           core certification logic  
-schemas/       artifact schemas  
-examples/      sample certification artifacts  
-cli/           command-line interface  
-docs/          design notes and specifications
+cli/        command-line interface  
+core/       core certification and verification logic  
+examples/   sample inputs and example artifacts  
+registry/   registry alignment and related metadata  
+schemas/    artifact schemas  
+scripts/    helper scripts and demo workflows  
+spec/       design notes and specifications  
+tests/      deterministic and verification tests
 
 ---
 
