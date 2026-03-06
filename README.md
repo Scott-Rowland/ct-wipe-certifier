@@ -196,7 +196,7 @@ tests/      deterministic and verification tests
 After generating a certification artifact, it can be independently verified.
 
 ```bash 
-ct-wipe verify artifact.json
+python3 -m cli.ct_wipe_certify --verify artifact.json
 
 ```
 
