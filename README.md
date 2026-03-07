@@ -1,5 +1,7 @@
 # CT-Wipe v0.1  
 
+![CI](https://github.com/Scott-Rowland/ct-wipe-certifier/actions/workflows/python-app.yml/badge.svg)
+
 Deterministic certification primitive for cryptographic proof of device wipe and erase state transitions.
 
 CT-Wipe is a deterministic **state-transition certification primitive** specialized for device wipe and cryptographic erase events.
