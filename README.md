@@ -8,6 +8,22 @@ CT-Wipe is a deterministic **state-transition certification primitive** speciali
 
 Category: **verification infrastructure / cryptographic provenance**
 
+---
+
+## Why CT-Wipe Exists
+
+Many infrastructure systems destroy data or retire hardware, but most environments
+cannot produce **cryptographically verifiable evidence** that these destructive
+operations actually occurred.
+
+Traditional wipe tools generate logs. Logs can be altered.
+
+CT-Wipe instead produces **deterministic cryptographic certification artifacts**
+that allow independent systems or auditors to verify that a sanitization event
+was recorded without tampering.
+
+---
+
 ### Design Principle
 
 CT-Wipe is implemented as a **deterministic verification primitive**, not a wipe utility.
