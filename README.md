@@ -29,6 +29,116 @@ The design prioritizes:
 
 ---
 
+## Use Cases
+
+CT-Wipe is a **deterministic certification primitive** designed for systems that must prove that a destructive or sanitization event occurred.  
+It generates cryptographically verifiable artifacts that can be independently validated during audits, investigations, or compliance reviews.
+
+Typical applications include:
+
+### Enterprise Device Decommissioning
+Organizations regularly retire laptops, servers, storage devices, and mobile hardware that previously contained sensitive data.  
+CT-Wipe artifacts can be generated during the wipe process to produce a **verifiable certification record** showing that the sanitization event occurred and was recorded without tampering.
+
+### Data Center Server Lifecycle
+Large data centers frequently decommission and replace servers and storage infrastructure.  
+
+CT-Wipe enables deterministic certification artifacts when systems transition from:
+
+```
+active infrastructure
+→ decommissioned
+→ sanitized
+```
+
+These artifacts allow operators or auditors to later verify the wipe event independently.
+
+### IT Asset Disposition (ITAD)
+IT asset disposition providers process large volumes of enterprise hardware for resale, recycling, or destruction.  
+
+CT-Wipe artifacts provide a **machine-verifiable wipe certification layer** that can accompany asset transfer records or compliance documentation.
+
+### Compliance and Audit Evidence
+Regulatory frameworks often require proof that sensitive storage media was sanitized.  
+
+CT-Wipe produces artifacts suitable for inclusion in audit workflows where independent verification of wipe events is required.
+
+### Security and Incident Response
+In security investigations, teams may need to demonstrate that devices or storage media were properly wiped after containing sensitive or compromised data.  
+
+Deterministic certification artifacts make it possible to verify that the wipe record itself has not been altered.
+
+---
+
+### Important Design Principle
+
+CT-Wipe **does not perform device wiping**.
+
+It is a **verification primitive** that generates deterministic certification artifacts describing wipe events performed by external tools or systems.
+
+---
+
+## Non-Goals
+
+CT-Wipe is intentionally minimal and focused. The following capabilities are **explicitly outside the scope** of this primitive.
+
+### Performing Device Wipes
+CT-Wipe does **not** execute data erasure or sanitization operations.  
+It certifies wipe events performed by external tools or systems.
+
+### Hardware Control
+CT-Wipe does not interact with storage devices, firmware, operating systems, or hardware controllers.
+
+### Policy Enforcement
+CT-Wipe does not enforce organizational wipe policies or compliance frameworks.  
+Policy decisions should be handled by upstream systems or orchestration layers.
+
+### Asset Lifecycle Management
+CT-Wipe does not manage inventory, ownership records, or device lifecycle tracking.
+
+### Chain-of-Custody Systems
+CT-Wipe does not attempt to replace full asset tracking or logistics platforms.  
+It produces deterministic artifacts that may be incorporated into those systems.
+
+### Identity or Authorization Management
+CT-Wipe does not provide identity management, authentication services, or access control mechanisms.
+
+---
+
+CT-Wipe is designed as a **small, deterministic certification primitive** that can integrate into larger systems without introducing operational dependencies.
+
+---
+
+## Relationship to Other Primitives
+
+CT-Wipe is designed as a **standalone verification primitive** focused on certification of wipe and sanitization events.
+
+Within broader lifecycle systems, CT-Wipe represents a specific type of **state-transition certification**: the transition of a storage device or asset from a state containing data to a verified sanitized state.
+
+The primitive is intentionally minimal so it can operate independently or be composed with other lifecycle primitives.
+
+In larger architectures, similar primitives may exist for other lifecycle events such as:
+
+```
+event declaration
+custody transfer
+state transition verification
+destruction certification
+```
+
+CT-Wipe focuses exclusively on the **sanitization transition** and the deterministic generation of verifiable certification artifacts for that event.
+
+This separation allows CT-Wipe to remain:
+
+- deterministic  
+- composable  
+- infrastructure-friendly  
+- usable across multiple operational domains
+
+without introducing dependencies on broader asset management or lifecycle systems.
+
+---
+
 ### Deterministic Cryptographic Wipe Certification
 
 CT-Wipe is a command-line tool that produces tamper-evident,
