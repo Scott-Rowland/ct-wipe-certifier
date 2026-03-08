@@ -33,6 +33,22 @@ Instead it produces **cryptographically verifiable state-transition artifacts** 
 
 ---
 
+## Problems CT-Wipe Helps Solve
+
+Engineers and security teams often need deterministic proof that a data sanitization event occurred.
+
+CT-Wipe can help when answering questions such as:
+
+- How can we **prove a device wipe occurred** after decommissioning hardware?
+- How can we generate **tamper-evident wipe logs** that auditors can verify independently?
+- How can we produce **cryptographic proof of data sanitization** for compliance workflows?
+- How can infrastructure pipelines create **deterministic verification artifacts** for destructive lifecycle events?
+- How can security teams validate that a **crypto-erase or wipe operation was recorded without modification**?
+
+CT-Wipe addresses these needs by generating deterministic certification artifacts that can be independently verified using cryptographic hashing and optional signatures.
+
+---
+
 ## Design Goals
 
 CT-Wipe is designed to provide a minimal, deterministic primitive for producing verifiable state-transition artifacts.
