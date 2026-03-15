@@ -1,5 +1,7 @@
 # CT-Wipe v0.1  
 
+![CI](https://github.com/Scott-Rowland/ct-wipe-certifier/actions/workflows/python-app.yml/badge.svg)
+
 CT-Wipe produces deterministic cryptographic artifacts proving
 that a device wipe or destruction event occurred.
 
@@ -8,8 +10,6 @@ the wiping party.
 
 Organizations must prove device sanitization for compliance,
 but current proof relies on vendor-generated reports.
-
-![CI](https://github.com/Scott-Rowland/ct-wipe-certifier/actions/workflows/python-app.yml/badge.svg)
 
 Deterministic certification primitive for cryptographic proof of device wipe and erase state transitions.
 
