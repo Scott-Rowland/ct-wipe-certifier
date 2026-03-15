@@ -366,7 +366,7 @@ signature: valid
 ## Status
 
 Version: v0.1  
-Stability: Demo-ready  
+Stability: early prototype
 License: TBD  
 
 ---
@@ -375,9 +375,14 @@ Patent pending. See PATENTS.md.
 
 ---
 
+Verification remains fully local and independent.
+Future services will be optional convenience layers.
+
+---
+
 ## Roadmap (Non-binding)
 
 - Timestamp authority integration
 - Transparency log anchoring
-- Centralized verification service
+- Optional verification tooling
 - Enterprise policy layers
