@@ -1,5 +1,14 @@
 # CT-Wipe v0.1  
 
+CT-Wipe produces deterministic cryptographic artifacts proving
+that a device wipe or destruction event occurred.
+
+Artifacts can be independently verified without trusting
+the wiping party.
+
+Organizations must prove device sanitization for compliance,
+but current proof relies on vendor-generated reports.
+
 ![CI](https://github.com/Scott-Rowland/ct-wipe-certifier/actions/workflows/python-app.yml/badge.svg)
 
 Deterministic certification primitive for cryptographic proof of device wipe and erase state transitions.
@@ -359,6 +368,10 @@ signature: valid
 Version: v0.1  
 Stability: Demo-ready  
 License: TBD  
+
+---
+
+Patent pending. See PATENTS.md.
 
 ---
 
