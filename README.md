@@ -226,13 +226,17 @@ The same input produces identical certification artifacts.
 
 ## Intellectual Property Notice
 
-Certain methods and architectures related to CT-Wipe are subject to patent filings.
+Certain methods, systems, and architectures related to CT-Wipe are subject to pending patent applications.
 
-Patent Status: **Patent Pending**
+Patent Status: Patent Pending
 
-This repository provides a reference implementation of the CT-Wipe deterministic verification primitive for research, evaluation, and integration purposes.
+This repository is made publicly available for viewing and evaluation purposes only.
 
-Use of this repository does not grant rights to any patent claims that may exist now or in the future covering related architectures or extended capabilities.
+No license or rights are granted, whether express or implied, to use, reproduce, modify, distribute, or implement any portion of this code or underlying methods.
+
+No rights are granted to any patent claims that may exist now or in the future covering related implementations, architectures, or extensions.
+
+All rights reserved.
 
 ---
 
