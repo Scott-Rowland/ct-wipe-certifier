@@ -2,7 +2,7 @@
 
 This document specifies the third-party verification procedure for CT-Wipe v0.1 artifacts.
 
-CT-Wipe produces deterministic certification artifacts that can be independently verified without access to the originating system.
+CT-Wipe produces deterministic, tamper-evident certification artifacts that can be independently verified without access to the originating system.
 
 ---
 
@@ -15,6 +15,7 @@ A verifier can confirm:
 3. (Optional) Signature integrity: an Ed25519 signature validates the Merkle root  
 
 If verification passes, the artifacts are internally consistent and match their recorded cryptographic digests.
+No claim is made about the truthfulness of the recorded event.
 
 ---
 
@@ -33,7 +34,7 @@ CT-Wipe verifies the cryptographic integrity of the recorded certification artif
 
 ## Independent Verification
 
-Verification does not require the CT-Wipe implementation itself.
+Verification does not require the CT-Wipe implementation. Verification MUST be reproducible by any independent implementation that follows the canonicalization and hashing rules.
 
 Any independent implementation that follows the canonicalization and hashing rules can reproduce the same results.
 
@@ -54,6 +55,8 @@ A CT-Wipe run directory contains:
 ---
 
 ## Canonicalization Contract (v0.1)
+
+Canonicalization MUST be deterministic and byte-for-byte reproducible.
 
 CT-Wipe canonicalization is deterministic and MUST remain stable for v0.1 verification.
 
@@ -79,11 +82,11 @@ Rules:
 
 - Order: [leaf_wpo, leaf_cdr]  
 - Concatenate as UTF-8 → hash with SHA-256  
-- Duplicate last node if odd  
-
+- If the number of nodes is odd, duplicate the final node.
+  
 ---
 
-## Verification Example (CLI)
+## Verification Example (Reference CLI)
 
 ```bash
 python3 -m cli.ct_wipe_certify --verify examples/verified_run
