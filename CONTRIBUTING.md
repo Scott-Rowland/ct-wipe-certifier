@@ -2,10 +2,12 @@
 
 Thank you for your interest in improving CT-Wipe.
 
-CT-Wipe is a deterministic certification primitive focused on producing
-verifiable state-transition artifacts for wipe and cryptographic erase events.
+CT-Wipe is a deterministic cryptographic certification primitive focused on producing
+verifiable destruction event certification artifacts.
 
 ## Development Principles
+
+Contributions MUST NOT introduce external dependencies, system-level assumptions, or non-deterministic behavior.
 
 Contributions should preserve the following properties:
 
@@ -14,8 +16,9 @@ Contributions should preserve the following properties:
 - reproducible verification
 - minimal trusted components
 
-Changes that alter artifact formats or verification semantics should
-include clear documentation and compatibility considerations.
+Artifact structure, canonicalization rules, and verification semantics are considered part of the verification contract and MUST remain stable within v0.1.  
+
+Changes that alter artifact formats or verification semantics MUST include explicit documentation and versioning considerations.
 
 ## Submitting Changes
 
