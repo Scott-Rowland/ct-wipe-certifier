@@ -16,7 +16,7 @@ Most systems can perform a wipe. Very few can prove it in a deterministic, indep
 
 # CT-Wipe v0.1
 
-Deterministic cryptographic wipe certification primitive.
+Deterministic cryptographic certification primitive for verifiable destruction events.
 
 ## What It Does
 
