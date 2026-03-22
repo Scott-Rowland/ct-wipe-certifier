@@ -16,13 +16,13 @@ Most systems can perform a wipe. Very few can prove it in a deterministic, indep
 
 # CT-Wipe v0.1
 
-Deterministic cryptographic certification primitive for verifiable destruction events.
+Deterministic cryptographic certification primitive for destruction event verification.
 
 ## What It Does
 
 CT-Wipe produces deterministic, tamper-evident certification artifacts for destruction events.
 
-Verification is independent, reproducible, and fails closed.
+Verification is independent, reproducible, and fail-closed.
 
 ## Verify It Yourself (30 seconds)
 
@@ -51,7 +51,7 @@ VERIFY FAIL
 
 CT-Wipe is not a workflow, service, or platform.
 
-It is a minimal, standalone primitive that produces deterministic certification artifacts for a single lifecycle event: data sanitization.
+It is a minimal, standalone primitive that produces deterministic certification artifacts for a single lifecycle event: data destruction.
 
 For identical inputs:
 - Canonical artifacts are identical
