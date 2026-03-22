@@ -20,9 +20,9 @@ Deterministic cryptographic certification primitive for destruction event verifi
 
 ## What It Does
 
-CT-Wipe produces deterministic, tamper-evident certification artifacts for destruction events.
+CT-Wipe produces deterministic, tamper-evident certification artifacts for destruction.
 
-Verification is independent, reproducible, and fail-closed.
+Verification remains independent, reproducible, and fail-closed.
 
 ## Verify It Yourself (30 seconds)
 
@@ -73,6 +73,6 @@ It does not depend on external systems, registries, or orchestration layers.
 
 It does not assume trust in the system that produced the artifact.
 
-CT-Wipe only produces and verifies deterministic certification artifacts for a single event.
+CT-Wipe produces and verifies deterministic certification artifacts for a single event.
 
 
