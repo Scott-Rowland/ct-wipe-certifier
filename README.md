@@ -1,4 +1,13 @@
 
+## Intellectual Property Notice
+
+Certain methods and architectures related to deterministic event certification, artifact canonicalization, and independent verification may be subject to pending patent protection.
+
+This repository provides a reference implementation of a standalone verification primitive for research, evaluation, and integration purposes only.
+
+No rights are granted to any patent claims covering extended architectures, system compositions, or lifecycle integrations.
+
+
 CT-Wipe is a standalone verification primitive designed to produce reproducible, tamper-evident certification artifacts for data sanitization events.
 
 Most systems can perform a wipe. Very few can prove it in a deterministic, independently verifiable way.
