@@ -76,13 +76,3 @@ It does not assume trust in the system that produced the artifact.
 CT-Wipe only produces and verifies deterministic certification artifacts for a single event.
 
 
-## Relationship to Other Primitives
-
-CT-Wipe is a standalone verification primitive focused on a single lifecycle transition: data sanitization.
-
-In broader system architectures, similar primitives may exist for other lifecycle events within a system, such as creation, modification, transfer, or observation.
-
-Each primitive operates independently, producing deterministic, verifiable artifacts for its respective event.
-
-No assumptions are made about coordination, ordering, or dependency between such primitives.
-
