@@ -62,3 +62,16 @@ Verification is independent and fail-closed.
 
 No external system state is required to validate results.
 
+
+## What This Is Not
+
+CT-Wipe does not perform wipe operations.
+
+It does not manage assets, devices, or lifecycle state.
+
+It does not depend on external systems, registries, or orchestration layers.
+
+It does not assume trust in the system that produced the artifact.
+
+CT-Wipe only produces and verifies deterministic certification artifacts for a single event.
+
