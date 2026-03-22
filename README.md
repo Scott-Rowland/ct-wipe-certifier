@@ -1,3 +1,10 @@
+
+CT-Wipe is a standalone verification primitive designed to produce reproducible, tamper-evident certification artifacts for data sanitization events.
+
+Most systems can perform a wipe. Very few can prove it in a deterministic, independently verifiable way.
+
+## Why This Exists
+
 # CT-Wipe v0.1
 
 Deterministic cryptographic wipe certification primitive.
