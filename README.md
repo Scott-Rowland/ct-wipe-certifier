@@ -9,19 +9,17 @@ No rights are granted to any patent claims covering extended architectures, syst
 
 CT-Wipe is a standalone verification primitive designed to produce reproducible, tamper-evident certification artifacts for destruction events.
 
-Most systems can perform a wipe. Very few can prove it in a deterministic, independently verifiable way.
-
-# CT-Wipe v0.1
+## CT-Wipe v0.1
 
 Deterministic cryptographic certification primitive for destruction event verification.
 
-Why This Exists
+## Why This Exists
 
 Most systems can perform a wipe. Very few can prove it in a deterministic, independently verifiable way.
 
 ## What It Does
 
-CT-Wipe produces deterministic, tamper-evident certification artifacts for destruction.
+CT-Wipe produces deterministic, tamper-evident certification artifacts for destruction events.
 
 Verification remains independent, reproducible, and fail-closed.
 
