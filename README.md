@@ -1,5 +1,14 @@
 # CT-Wipe v0.1  
 
+## Verify It Yourself (30 seconds)
+
+```bash
+git clone https://github.com/Scott-Rowland/ct-wipe-certifier
+cd ct-wipe-certifier
+python3 -m cli.ct_wipe_certify --verify examples/verified_run
+```
+
+
 ![CI](https://github.com/Scott-Rowland/ct-wipe-certifier/actions/workflows/python-app.yml/badge.svg)
 
 CT-Wipe produces deterministic cryptographic artifacts proving
