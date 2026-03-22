@@ -46,3 +46,19 @@ python3 -m cli.ct_wipe_certify --verify examples/verified_run
 Expected result:
 
 VERIFY FAIL
+
+## Deterministic Verification Primitive
+
+CT-Wipe is not a workflow, service, or platform.
+
+It is a minimal, standalone primitive that produces deterministic certification artifacts for a single lifecycle event: data sanitization.
+
+For identical inputs:
+- Canonical artifacts are identical
+- Cryptographic hashes are identical
+- Merkle roots are identical
+
+Verification is independent and fail-closed.
+
+No external system state is required to validate results.
+
