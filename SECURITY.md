@@ -4,11 +4,7 @@
 
 If you discover a security vulnerability in CT-Wipe, please report it responsibly.
 
-Send details to:
-
-open a GitHub security advisory
-
-or open a private security advisory through GitHub.
+Report vulnerabilities by opening a private GitHub security advisory.
 
 Please include:
 
@@ -19,8 +15,11 @@ Please include:
 
 ## Scope
 
-CT-Wipe is a deterministic certification primitive that produces verifiable
-state-transition artifacts. Vulnerabilities may include:
+CT-Wipe is a deterministic certification primitive that produces deterministic, verifiable destruction event certification artifacts. 
+
+CT-Wipe security scope is limited to the correctness and integrity of artifact generation and verification.
+
+Relevant Vulnerabilities nclude:
 
 - incorrect verification behavior
 - hash or Merkle construction flaws
